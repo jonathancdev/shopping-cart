@@ -1,23 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import './Menu.css'
+import Submenu from './Submenu'
+import MenuItem from './MenuItem'
 
 const Menu = (props) => {
 
-    // useEffect(() => {
-    //     fetchCats();
-    //     console.log('ran effect')
-    // }, [])
-
-    // const [cats, setCats] = useState([])
-
-
-    // const fetchCats = async () => {
-    //     const data = await fetch('https://fakestoreapi.com/products/categories')
-    //     let cats = await data.json()
-    //     setCats(cats)
-    // } 
-
+    const cats = Object.keys(props.cats)
+    console.log(props.cats)
     return (
         <div className={props.showMenu ? 'menu open' : 'menu'}>
             <Link onClick={props.hideMenu} to='/shop'>
@@ -26,13 +16,14 @@ const Menu = (props) => {
             <div className='submenu-header'>
                 <h3>CATEGORIES</h3>
             </div>
-            {props.cats.map((cat, i) =>
+
+
+            {cats.map((cat, i) =>
             <div className='menu-cat' key={i}>
-               {/* <Link onClick={props.hideMenu} to={`/shop/category/${cat.replace(/\s+|'/g, '-')}`}> */}
-               <Link onClick={props.hideMenu} to={`/shop/category/${cat[0]}`}>
-                <h4>{cat}</h4>
-                </Link>
+                <MenuItem cat={cat} cats={props.cats} hideMenu={props.hideMenu}/>
             </div>
+
+
                 )}
         </div>
     )
@@ -40,11 +31,8 @@ const Menu = (props) => {
 
 export default Menu;
 
-{/* <div className="menu-cat">Category</div>
-<div className="menu-cat-children">
-    <div className="menu-cat-child">Child 1</div>
-    <div className="menu-cat-child">Child 2</div>
-    <div className="menu-cat-child">Child 3</div>
-</div> */}
 
-// ${cat.replace(/\s+|'/g, '-')}
+            //    {/* <Link onClick={props.hideMenu} to={`/shop/category/${cat.replace(/\s+|'/g, '-')}`}> */}
+            //    <Link onClick={props.hideMenu} to={`/shop/category/${cat[0]}`}>
+            //     <h4>{cat}</h4>
+            //     </Link>

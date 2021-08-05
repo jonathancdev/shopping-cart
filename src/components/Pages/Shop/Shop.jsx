@@ -4,20 +4,6 @@ import './Shop.css';
 
 const Shop = (props) => {
 
-    useEffect(() => {
-        fetchTest();
-        console.log('ran effect')
-    }, [])
-
-    const [test, setTest] = useState([])
-
-
-    const fetchTest = async () => {
-        const data = await fetch('http://localhost:3500/items.json')
-        let test = await data.json()
-        setTest(test.items)
-    } 
-console.log(props)
     return (
         <div className='page shop'>
             <h1>Shopping page is here</h1>

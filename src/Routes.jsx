@@ -22,17 +22,15 @@ const Routes = () => {
     const [items, setItems] = useState([])
 
     const fetchCats = async () => {
-        //const data = await fetch('https://fakestoreapi.com/products/categories')
         const data = await fetch('http://localhost:3500/categories.json')
         let cats = await data.json()
-        console.log(cats.categories)
-        setCats(cats.categories)
+        setCats(cats.categories[0])
     }
     const fetchItems = async () => {
         const data = await fetch('http://localhost:3500/items.json')
         const items = await data.json()
         setItems(items.items)
-    } 
+    }
 
     const toggleMenu = () => setShowMenu(!showMenu);
     const hideMenu = () => setShowMenu(false)
@@ -54,7 +52,7 @@ const Routes = () => {
                 />
                 <Route exact path='/shop' 
                     render={(props) => (
-                        <Shop {...props} items={items} />
+                        <Shop {...props} items={items} cats={cats} />
                     )}
                 />
                 <Route path='/shop/category/:cat' 

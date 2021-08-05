@@ -1,10 +1,14 @@
-film photos and descriptions:
+friday aug 5:
+to do:
+    *leftovers*
+    submenu categories OK
+    fix routing/links to individual products (messed up strings from fixing previous fakeShopAPI)
+    look at odin and limit scope of project this time
 
-https://www.fujifilm.com/uk/en/consumer/films/negative-and-reversal#
+thursday aug 5
+to do: 
+    push to github OK
+    figure out what needs to be fetched and what json needs created
+    come up with name and start logo design
 
-https://www.bhphotovideo.com/c/buy/35mm-film/ci/40457
-
-https://www.ilfordphoto.com/black-white-film/35mm-film?___store=ilford_brochure&___from_store=ilford_uk
-
-https://cinestillfilm.com/collections/film
 

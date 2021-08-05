@@ -6,6 +6,7 @@
     width: 100%;
     transition: all 0.3s cubic-bezier(0.6, 0.04, 0.5, 1);
 }
+
 .open {
     transform: translateX(0);
     background-color: white;
@@ -14,12 +15,33 @@
 height: 60px;
 }
 .menu-cat {
-height: 60px;
+height: 100%;
 background-color: grey;
 }
+.menu-cat h4 {
+    font-size: 1.25rem;
+}
+.menu-cat h5 {
+    font-size: 0.75rem;
+}
+.menu-cat-btn {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    height: 90%;
+    text-align: start;
+}
+
 .menu-cat-children {
 
 }
 .menu-cat-child {
 height: 40px;
+}
+.submenu-cont {
+    height: 100%;
+}
+.submenu-cont a {
+    padding: 5px;
 }

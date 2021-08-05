@@ -14,7 +14,6 @@ const Category = (props) => {
     }
     const filterItems = () => {
         const category = parseCatParam()
-        console.log(category)
         const filtered = props.items.filter(item => item.category === category)
         return filtered
     }
