@@ -1,0 +1,25 @@
+.menu {
+    position: absolute;
+    transform: translateX(-105%);
+    background-color: rgba(255, 255, 255, 0.815);
+    min-height: 100vh;
+    width: 100%;
+    transition: all 0.3s cubic-bezier(0.6, 0.04, 0.5, 1);
+}
+.open {
+    transform: translateX(0);
+    background-color: white;
+}
+.menu-title {
+height: 60px;
+}
+.menu-cat {
+height: 60px;
+background-color: grey;
+}
+.menu-cat-children {
+
+}
+.menu-cat-child {
+height: 40px;
+}

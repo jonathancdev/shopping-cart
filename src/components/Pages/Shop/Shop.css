@@ -1,0 +1,79 @@
+.shop * {
+    margin: 0;
+    padding: 0;
+}
+.shop {
+    margin: 80px auto;
+}
+.items-grid {
+    margin: 25px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 300px));
+    grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
+
+}
+.item-wrap {
+    padding: 15px;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 200px;
+    max-height: 250px;
+    min-width: 200px;
+    max-width: 250px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.item-img-wrap {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 80%;
+}
+.item-img {
+    padding: 5px;
+    max-height: 130px;
+    object-fit: contain;
+}
+
+.item-title, .item-detail {
+    text-align: center;
+    font-weight: lighter;
+}
+.item-info {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+.item-brand {
+    font-size: 0.9rem;
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.507);
+    text-align: center;
+}
+.item-title {
+    font-size: 1rem;
+}
+.item-details {
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+    min-width: 200px;
+    color: rgba(0, 0, 0, 0.747);
+}
+.item-detail {
+    font-size: 0.8rem;
+}
+.item-price {
+    text-align: center;
+    font-size: 1.25rem;
+}

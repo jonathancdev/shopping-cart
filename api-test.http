@@ -1,0 +1,19 @@
+get http://localhost:3500/items.json
+Content-Type: application/json
+###
+get http://localhost:3500/src/img/items/50d.jpg
+###
+
+post http://localhost:3500/
+Content-Type: application/json
+
+    {
+      "id": 3,
+      "title": "3333333",
+      "description": "third item"
+    }
+
+###
+
+get http://localhost:3500/auth-endpoint
+Authorization: 8675309
