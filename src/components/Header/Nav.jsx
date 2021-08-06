@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom'
+import logo from '../../img/logo.png'
 
 const Nav = (props) => {
 
@@ -24,7 +25,11 @@ const Nav = (props) => {
         </div>
 
 
-            <Link onClick={closeMenu} to='/'><h2>LOGO</h2></Link>
+            <Link onClick={closeMenu} to='/'>
+                <div className="logo-wrap">
+                    <img className="logo" src={logo} alt="logo"></img>
+                </div>
+            </Link>
             <ul className='nav-links'>
                 <Link onClick={closeMenu} to='/about'><li>About</li></Link>
                 <Link onClick={closeMenu} to='/shop'><li>Shop</li></Link>

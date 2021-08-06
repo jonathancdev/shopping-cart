@@ -55,13 +55,15 @@ const Routes = () => {
                         <Shop {...props} items={items} cats={cats} />
                     )}
                 />
-                <Route path='/shop/category/:cat' 
+                <Route path='/shop/category/:category/:subcategory' 
                     render={(props) => (
                         <Category {...props} items={items} />
                     )}
                 />
-                <Route exact path='/shop/:id' 
-                component={Item}
+                <Route exact path='/shop/item/:title' 
+                render={(props) => (
+                    <Item {...props} items={items} />
+                )}
                 />
                 <Route path='/about' 
                 component={About}

@@ -1,53 +1,72 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import './Category.css';
 
 const Category = (props) => {
 
-    const parseCatParam = () => {
-        let passed = props.match.params.cat
-        if (passed.includes('-s' && '-c')) {
-            passed = passed.replace('-s', '\'s')
-            passed = passed.replace('-c', ' c')
+
+    const parse = (param) => {
+        if (param === "brands") {
+            const parsed = "brand"
+            return parsed
+        } else if (param === "color") {
+            const parsed = "type"
+            return parsed
+        }    else {
+            return param
         }
-        return passed
     }
+
+    const transformLink = (str) => {
+        str = str.replace(/\s+/g, '-').toLowerCase();
+        return str
+    } 
+
+    const category = parse(props.match.params.category)
+    const subcategory = props.match.params.subcategory
+
     const filterItems = () => {
-        const category = parseCatParam()
-        const filtered = props.items.filter(item => item.category === category)
+        const itemCat = category
+        console.log(itemCat)
+        const filtered = props.items.filter(item => item[itemCat].toLowerCase() === subcategory)
         return filtered
     }
-    const truncate = (str, max = 6) => {
-        const array = str.trim().split(' ');
-        const ellipsis = array.length > max ? '...' : '';
+    // const truncate = (str, max = 6) => {
+    //     const array = str.trim().split(' ');
+    //     const ellipsis = array.length > max ? '...' : '';
       
-        return array.slice(0, max).join(' ') + ellipsis;
-      };
+    //     return array.slice(0, max).join(' ') + ellipsis;
+    //   };
 
     const catItems = filterItems()
+
+    console.log(transformLink("Fujicolor 200"))
 
     return (
         <div className='page category'>
             <div className="cat-header">
-                <h1>{parseCatParam()}</h1>
-                <h3>subheader thing</h3>
-                <p>some text about thie description i guess</p>
+                <h1>{category}: {subcategory}</h1>
             </div>
 
-            <div className="cat-items-grid">
-
-                {catItems.map(item => 
-                    <Link className="grid-preview-link" to={`/shop/${item.id}`}>
-                        <div className='cat-item-wrap' key={item.id}>
-                            <div className="grid-preview-img-wrap">
-                                <img src={item.image} alt="item-preview" className="grid-preview-img" />
-                            </div>                            
-                            <p className="grid-preview-title">{truncate(item.title)}</p>
+            <div className="items-grid">
+                {catItems.map(item =>
+                    <div className='item-wrap' key={item.id}>
+                        <Link to={`/shop/item/${transformLink(item.title)}`}>
+                        <h3 className="item-brand">{item.brand.toUpperCase()}</h3>
+                        <div className="item-img-wrap">
+                            <img className="item-img" src={item.image}></img>
                         </div>
-                    </Link>
-
-                    )}
-
+                        <div className="item-info">
+                            <h4 className="item-title">{item.title}</h4>
+                            <div className="item-details">
+                                <span className="item-detail">iso: {item.iso}</span>
+                                <span className="item-detail">{item.format}</span>
+                                <span className="item-detail">{item.type.replace(/ .*/,'').toLowerCase()}</span>
+                            </div>
+                            <p className="item-price">€{Number(item.price).toFixed(2)}</p>
+                        </div>
+                        </Link>
+                    </div>
+                        )}
             </div>
         </div>
     )

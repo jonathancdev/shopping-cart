@@ -4,13 +4,18 @@ import './Shop.css';
 
 const Shop = (props) => {
 
+    const transformLink = (str) => {
+        str = str.replace(/\s+/g, '-').toLowerCase();
+        return str
+    } 
+
     return (
         <div className='page shop'>
             <h1>Shopping page is here</h1>
             <div className="items-grid">
                 {props.items.map(item =>
                     <div className='item-wrap' key={item.id}>
-                        <Link to={`/shop/${item.id}`}>
+                         <Link to={`/shop/item/${transformLink(item.title)}`}>
                         <h3 className="item-brand">{item.brand.toUpperCase()}</h3>
                         <div className="item-img-wrap">
                             <img className="item-img" src={item.image}></img>
