@@ -1,9 +1,14 @@
-friday aug 5:
+saturday aug 7:
+to do:
+    close all submenus when one is clicked
+    look at odin and limit scope of project this time
+
+friday aug 6:
 to do:
     *leftovers*
     close all submenus when one is clicked
-    animate submenu
-    style menu
+    animate submenu OK
+    style menu OK
     look at odin and limit scope of project this time
 
     submenu categories OK
