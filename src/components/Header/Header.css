@@ -11,19 +11,31 @@ a, a:visited {
     min-height: 10vh;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
 }
+nav {
+    background-color: white;
+    transition: all 0.5s cubic-bezier(0.6, 0.04, 0.5, 1);
+}
+nav.open {
+    background-color: #FFC857;
+    transform: translateX(50%);
+    transform: translateX(0);
+
+}
 .nav-header {
+    margin: 0 auto;
+    padding-top: 5px;
+    width: 95%;
     height: 80px;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    background-color: white;
+    justify-content: space-between;
 }
 .nav-links {
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    visibility: hidden;
     list-style: none;
+}
+.nav-links a {
+    margin-right: 20px;
 }
 .menu-toggle {
     height: 50px;
@@ -70,5 +82,5 @@ a, a:visited {
     height: 1px;
 }
 .logo {
-    height: 40px;
+    height: 50px;
 }

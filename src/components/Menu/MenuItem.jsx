@@ -13,19 +13,18 @@ const MenuItem = (props) => {
         <div className='menu-item'>
             <button onClick={toggleSubmenu} className="menu-cat-btn">
                 <h4>{props.cat}</h4>
+                <i class={!showSubmenu ? "fas fa-angle-down" : "fas fa-angle-up"}></i>
             </button>
 
-            {showSubmenu
-            ? <div className="submenu-cont">
+            <div className="submenu-cont">
                         <Submenu
                             subMenuItems={props.cats[props.cat]}
                             cat={props.cat}
                             hideMenu={props.hideMenu}
                             hideSubmenu={hideSubmenu}
+                            showSubmenu={showSubmenu}
                         />
             </div> 
-            : null}
-
         </div>
     )
 }

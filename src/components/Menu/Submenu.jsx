@@ -10,9 +10,9 @@ const Submenu = (props) => {
     }
 
     return (
-        <div className='submenu'>
+        <div className={props.showSubmenu ? 'submenu open' : 'submenu'}>
             {props.subMenuItems.map((item, i) => 
-                <Link onClick={handleClick} to={`/shop/category/${props.cat}/${item.toLowerCase()}`} key={i}>
+                <Link className="submenu-link" onClick={handleClick} to={`/shop/category/${props.cat}/${item.toLowerCase()}`} key={i}>
                     <h5>{item.toLowerCase()}</h5>
                 </Link>
             )}

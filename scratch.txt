@@ -3,23 +3,17 @@ to do:
     *leftovers*
     close all submenus when one is clicked
     animate submenu
+    style menu
+    look at odin and limit scope of project this time
+
     submenu categories OK
     fix routing/links to categories OK
-    and individual products (messed up strings from fixing previous fakeShopAPI)
-    look at odin and limit scope of project this time
-    come up with name and start logo design
+    and individual products (messed up strings from fixing previous fakeShopAPI) OK
+    come up with name and start logo design OK
 
 thursday aug 5
 to do: 
     push to github OK
     figure out what needs to be fetched and what json needs created OK
     come up with name and start logo design
-
-
-menu --> submenu --> link to category page (just need to filter items by cat)
-
-items page or specific items page
-sort by alphabetical ascending/descending / price asc/desc/
-filter by (exclude if used as category link) brand/title/iso/format/price(0-5, 5-10, 10-20, 20+)
-search?
 

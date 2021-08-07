@@ -1,30 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import './Menu.css'
-import Submenu from './Submenu'
 import MenuItem from './MenuItem'
 
 const Menu = (props) => {
 
     const cats = Object.keys(props.cats)
-    console.log(props.cats)
+ 
     return (
         <div className={props.showMenu ? 'menu open' : 'menu'}>
-            <Link onClick={props.hideMenu} to='/shop'>
-                <h2 className="menu-title">SHOP</h2>
-            </Link>
-            <div className='submenu-header'>
-                <h3>CATEGORIES</h3>
+            <div className="menu-wrapper">
+
+                {cats.map((cat, i) =>
+                <div className='menu-cat' key={i}>
+                    <MenuItem cat={cat} cats={props.cats} hideMenu={props.hideMenu}/>
+                </div>
+                    )}
+
+                <Link onClick={props.hideMenu} to='/shop'>
+                    <div className="menu-cat">
+                        <h4>browse all film</h4>
+                    </div>
+                </Link>
             </div>
-
-
-            {cats.map((cat, i) =>
-            <div className='menu-cat' key={i}>
-                <MenuItem cat={cat} cats={props.cats} hideMenu={props.hideMenu}/>
-            </div>
-
-
-                )}
         </div>
     )
 }
