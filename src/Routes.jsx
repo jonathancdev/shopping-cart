@@ -20,6 +20,14 @@ const Routes = () => {
     const [showMenu, setShowMenu] = useState(false)
     const [cats, setCats] = useState([])
     const [items, setItems] = useState([])
+    const [activeMenuItem, setActiveMenuItem] = useState('null')
+
+    const onOpen = (item) => {
+        setActiveMenuItem(item)
+    }
+    const closeActiveMenu = () => {
+        setActiveMenuItem(null)
+    }
 
     const fetchCats = async () => {
         const data = await fetch('http://localhost:3500/categories.json')
@@ -42,9 +50,10 @@ const Routes = () => {
             toggleMenu={toggleMenu} 
             hideMenu={hideMenu}
             showMenu={showMenu}
+            closeActiveMenu={closeActiveMenu}
             />
 
-            <Menu cats={cats} showMenu={showMenu} hideMenu={hideMenu}/>
+            <Menu cats={cats} showMenu={showMenu} hideMenu={hideMenu} activeMenuItem={activeMenuItem} onOpen={onOpen}/>
 
             <Switch>
                 <Route exact path='/' 

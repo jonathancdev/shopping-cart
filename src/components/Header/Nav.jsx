@@ -8,6 +8,7 @@ const Nav = (props) => {
 
     const handleToggle = () => {
         props.toggleMenu()
+        props.closeActiveMenu()
     }
     const closeMenu = () => {
         props.hideMenu()

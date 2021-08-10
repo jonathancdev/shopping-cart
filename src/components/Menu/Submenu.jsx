@@ -8,9 +8,9 @@ const Submenu = (props) => {
         props.hideMenu()
         props.hideSubmenu()
     }
-
+console.log(props)
     return (
-        <div className={props.showSubmenu ? 'submenu open' : 'submenu'}>
+        <div className={props.showSubmenu ? `submenu open ${props.cat}-submenu` : `submenu ${props.cat}-submenu`}>
             {props.subMenuItems.map((item, i) => 
                 <Link className="submenu-link" onClick={handleClick} to={`/shop/category/${props.cat}/${item.toLowerCase()}`} key={i}>
                     <h5>{item.toLowerCase()}</h5>

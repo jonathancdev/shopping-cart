@@ -5,15 +5,20 @@ import MenuItem from './MenuItem'
 
 const Menu = (props) => {
 
+    // const [activeMenuItem, setActiveMenuItem] = useState('null')
+
+    // const onOpen = (item) => {
+    //     setActiveMenuItem(item)
+    // }
+
     const cats = Object.keys(props.cats)
- 
     return (
         <div className={props.showMenu ? 'menu open' : 'menu'}>
             <div className="menu-wrapper">
 
                 {cats.map((cat, i) =>
                 <div className='menu-cat' key={i}>
-                    <MenuItem cat={cat} cats={props.cats} hideMenu={props.hideMenu}/>
+                    <MenuItem cat={cat} cats={props.cats} hideMenu={props.hideMenu} activeMenuItem={props.activeMenuItem} onOpen={props.onOpen}/>
                 </div>
                     )}
 

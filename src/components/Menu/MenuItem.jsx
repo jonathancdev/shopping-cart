@@ -9,9 +9,18 @@ const MenuItem = (props) => {
     const toggleSubmenu = () => setShowSubmenu(!showSubmenu);
     const hideSubmenu = () => setShowSubmenu(false)
 
+    if (props.activeMenuItem !== props.cat && showSubmenu === true) {
+        hideSubmenu()
+        }
+
+    const handleClick = () => {
+        toggleSubmenu()
+        props.onOpen(props.cat)
+    }
+
     return (
         <div className='menu-item'>
-            <button onClick={toggleSubmenu} className="menu-cat-btn">
+            <button onClick={handleClick} className="menu-cat-btn">
                 <h4>{props.cat}</h4>
                 <i class={!showSubmenu ? "fas fa-angle-down" : "fas fa-angle-up"}></i>
             </button>

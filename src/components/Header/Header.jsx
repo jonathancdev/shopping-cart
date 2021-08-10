@@ -9,6 +9,7 @@ const Header = (props) => {
             hideMenu={props.hideMenu}
             toggleMenu={props.toggleMenu}
             showMenu={props.showMenu}
+            closeActiveMenu={props.closeActiveMenu}
             />
         </div>
     )
