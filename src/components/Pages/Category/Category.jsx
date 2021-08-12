@@ -26,7 +26,6 @@ const Category = (props) => {
 
     const filterItems = () => {
         const itemCat = category
-        console.log(itemCat)
         const filtered = props.items.filter(item => item[itemCat].toLowerCase() === subcategory)
         return filtered
     }
@@ -38,8 +37,6 @@ const Category = (props) => {
     //   };
 
     const catItems = filterItems()
-
-    console.log(transformLink("Fujicolor 200"))
 
     return (
         <div className='page category'>

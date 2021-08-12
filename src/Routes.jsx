@@ -6,9 +6,9 @@ import Header from './components/Header/Header';
 import Menu from './components/Menu/Menu'
 import Home from './components/Pages/Home/Home';
 import Shop from './components/Pages/Shop/Shop';
-import About from './components/Pages/About/About';
 import Item from './components/Pages/Item/Item';
 import Category from './components/Pages/Category/Category';
+import Cart from './components/Pages/Cart/Cart';
 
 const Routes = () => {
 
@@ -21,6 +21,7 @@ const Routes = () => {
     const [cats, setCats] = useState([])
     const [items, setItems] = useState([])
     const [activeMenuItem, setActiveMenuItem] = useState('null')
+    const [shoppingCart, setShoppingCart] = useState([])
 
     const onOpen = (item) => {
         setActiveMenuItem(item)
@@ -39,9 +40,28 @@ const Routes = () => {
         const items = await data.json()
         setItems(items.items)
     }
-
+    const addToCart = (obj) => {
+        const prev = shoppingCart
+        const item = obj
+        if (!checkObj(item)) {
+            prev.push(obj)
+            setShoppingCart([...prev])
+        } else {
+            const findId = prev.find(item => item.cartId === obj.cartId)
+            const index = prev.indexOf(findId)
+            prev[index].increment()
+            setShoppingCart([...prev])
+        }
+    }
+    const checkObj = (obj) => {
+        const cart = shoppingCart
+        const idList = cart.map((item) => item.cartId)
+        return idList.includes(obj.cartId)
+    }
     const toggleMenu = () => setShowMenu(!showMenu);
     const hideMenu = () => setShowMenu(false)
+
+    console.log(shoppingCart)
 
     return (
         <BrowserRouter>
@@ -51,6 +71,7 @@ const Routes = () => {
             hideMenu={hideMenu}
             showMenu={showMenu}
             closeActiveMenu={closeActiveMenu}
+            shoppingCart={shoppingCart}
             />
 
             <Menu cats={cats} showMenu={showMenu} hideMenu={hideMenu} activeMenuItem={activeMenuItem} onOpen={onOpen}/>
@@ -71,11 +92,13 @@ const Routes = () => {
                 />
                 <Route exact path='/shop/item/:title' 
                 render={(props) => (
-                    <Item {...props} items={items} />
+                    <Item {...props} items={items} addToCart={addToCart}/>
                 )}
                 />
-                <Route path='/about' 
-                component={About}
+                <Route path='/cart' 
+                render={(props) => (
+                    <Cart {...props} shoppingCart={shoppingCart}/>
+                )}
                 />
             </Switch>
         </BrowserRouter>

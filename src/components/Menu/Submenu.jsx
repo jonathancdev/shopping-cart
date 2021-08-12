@@ -8,7 +8,7 @@ const Submenu = (props) => {
         props.hideMenu()
         props.hideSubmenu()
     }
-console.log(props)
+
     return (
         <div className={props.showSubmenu ? `submenu open ${props.cat}-submenu` : `submenu ${props.cat}-submenu`}>
             {props.subMenuItems.map((item, i) => 

@@ -1,3 +1,20 @@
+thursday aug 12
+cart icon added
+
+shopping cart logic:
+
+add to cart button have checkmark when added, allow second add (see asos on figma)
+where to hold state?
+create unique ids for each products
+
+when added to cart, new cart object created
+item (plus all item details)
+quantity
+methods (increment / decrement quantity, check for zero?, remove from cart)
+if productid already in cart, increment
+
+calculate quantity (sum of all cart object quantities)
+
 saturday aug 7:
 to do:
     close all submenus when one is clicked

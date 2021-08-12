@@ -10,6 +10,7 @@ const Header = (props) => {
             toggleMenu={props.toggleMenu}
             showMenu={props.showMenu}
             closeActiveMenu={props.closeActiveMenu}
+            shoppingCart={props.shoppingCart}
             />
         </div>
     )

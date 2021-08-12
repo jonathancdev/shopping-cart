@@ -1,0 +1,13 @@
+.home-grid {
+    margin: 5px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+}
+.home-item-wrap {
+    border: solid;
+    height: 150px;
+    width: 150px;
+}

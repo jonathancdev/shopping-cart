@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import './Item.css';
 
 const Item = (props) => {
-    console.log(props.match.params.title)
 
     const transformLink = (str) => {
         if (str === "fujicolor-superia-x-tra400") {
@@ -13,11 +12,35 @@ const Item = (props) => {
             return str
         }
     }
-
+    const [added, setAdded] = useState(false)
     const filter = props.items.filter((item) => item.title.toLowerCase() == transformLink(props.match.params.title))
     const item = filter[0]
-    console.log(item)
-    console.log(props.items)
+    const uniqueId = (item.brand + item.title + item.format + item.price).replace(/\s/g, '')
+
+
+    const handleClick = () => {
+        props.addToCart(createObject())
+        itemAddedCycle()
+    }
+
+    const createObject = () => {
+        const obj = {
+            cartId: uniqueId,
+            brand: item.brand,
+            title: item.title,
+            price: item.price,
+            image: item.image,
+            quantity: 1,
+            increment() { this.quantity += 1},
+            decrement() { this.quantity -= 1}
+        }
+        return obj
+    }
+
+    const itemAddedCycle = () => {
+        setAdded(true)
+        setTimeout(() => setAdded(false), 4000)
+    }
 
     return (
         <div className='page item'>
@@ -35,7 +58,21 @@ const Item = (props) => {
                 <p className="item-page-desc">{item.description}</p>
                 <div className="price-div">
                     <p className="item-page-price">€{Number(item.price).toFixed(2)}</p>
-                    <button className="cart-btn">add to cart</button>
+
+                    <div className="cart-btn-div">
+
+                        <div className={added ? "added-icon-div active" : "added-icon-div"}>
+                            <div className="added-icon"><i class="far fa-check-square"></i></div>
+                        </div>
+
+                        <button className="cart-btn" 
+                            onClick={handleClick}
+                            disabled={added}
+                            >
+                            {added ? 'added to cart!' : 'add to cart'} 
+                        </button>
+
+                    </div>
                 </div>
             </div>
             {/* <p>{item.brand}</p>

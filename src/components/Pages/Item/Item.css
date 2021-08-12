@@ -1,5 +1,5 @@
 .item * {
-    padding: 3px 0;
+    padding: 0 0;
 }
 .item-page-wrap {
     width: 80%;
@@ -67,6 +67,15 @@
     font-size: 1.5rem;
     margin-bottom: 5px;
 }
+.cart-btn-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    width: 220px;
+    background-color: #084C61;
+    border-radius: 3px;
+}
 .cart-btn {
     background-color: #084C61;
     border: none;
@@ -77,5 +86,26 @@
     cursor: pointer;
     font-weight: bolder;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1rem;
+}
+.added-icon-div {
+    opacity: 0%;
+    position: absolute;
+    margin-right: 165px;
+    height: 30px;
+    width: 30px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease-out;
+}
+.added-icon-div.active {
+    opacity: 100%;
+    transition: opacity 0s;
+
+}
+.added-icon {
+    color: white;
+    font-size: 28px;
 }

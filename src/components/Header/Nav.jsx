@@ -1,11 +1,17 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom'
 import logo from '../../img/logo.png'
+import cartIcon from '../../img/cart.png'
 
 const Nav = (props) => {
 
     const [menuClosed, setMenuClosed] = useState(true)
-
+    const cart = props.shoppingCart
+    const cartCount = cart.reduce(
+        (acc, currItem) => {
+            return acc + currItem.quantity
+        }, 0
+    );
     const handleToggle = () => {
         props.toggleMenu()
         props.closeActiveMenu()
@@ -32,10 +38,16 @@ const Nav = (props) => {
                         <img className="logo" src={logo} alt="logo"></img>
                     </div>
                 </Link>
-                <ul className='nav-links'>
-                    <Link onClick={closeMenu} to='/about'><li>About</li></Link>
-                    <Link onClick={closeMenu} to='/shop'><li>Shop</li></Link>
-                </ul>
+                <Link to='/cart'>
+                    <div className="cart-wrap">
+                        <img className="cart" src={cartIcon} alt="cart icon"></img>
+                        <>
+                        {cartCount > 0
+                        ? <div className="cart-item-count">{cartCount}</div>
+                        : null}
+                        </>
+                    </div>
+                </Link>
             </div>
         </nav>
     )
