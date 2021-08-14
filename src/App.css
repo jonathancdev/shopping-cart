@@ -13,3 +13,7 @@ html {
 
 }
 
+input {
+    height: 25px;
+    border: none;
+}

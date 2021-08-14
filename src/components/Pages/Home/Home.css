@@ -1,13 +1,99 @@
+
 .home-grid {
-    margin: 5px;
+    border: none;
+    width: 375px;
+    height: 375px;
+    padding: 0px;
+    margin: 25px 0px 0px 0px;
     display: grid;
     justify-content: center;
     align-items: center;
-    grid-gap: 10px;
+    grid-gap: 5px;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
 }
 .home-item-wrap {
-    border: solid;
-    height: 150px;
-    width: 150px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.home-item-img-wrap {
+    height: 100%;
+}
+.home-item-img {
+    height: 185px;
+    width: 185px;
+    object-fit: cover;
+}
+.home-item-title {
+    text-align: center;
+    margin-top: -25px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow: -1px -1px 0 #000, 0.5px -1px 0 #000, -1px 0.5px 0 #000, 1px 0.5px 0 #000;
+    width: 100%;
+    height: 100%;
+}
+.home-banners {
+    display: flex;
+    flex-direction: column;
+}
+.home-banner-wrap {
+    margin-top: 8px;
+    background-color: #ffd379;
+    width: 375px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.home-banner {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.home-banner.search {
+    flex-direction: column;
+    align-items: center;
+
+}
+.home-banner.search div {
+    display: flex;
+    align-items: center;
+}
+.home-banner-title {
+    font-size: 32px;
+    margin: 15px;
+    color: #084C61;
+}
+.home-banner h2 {
+    font-size: 24px;
+    color: #084C61;
+}
+.home-banner-arrow {
+    position: absolute;
+    font-size: 24px;
+    margin: 4px 0px 20px 247px;
+    color: #084C61;
+}
+.home-banner-search-icon {
+    position: absolute;
+    font-size: 20px;
+    margin: 4px 0px 15px 280px;
+    color: #084C61;
+}
+.input-search {
+    width: 325px;
+    height: 30px;
+    font-size: 18px;
+    text-align: center;
+    background-color: #fff4df;
+    color: #084C61;
+}
+.fa-search {
+    pointer-events: none;
 }

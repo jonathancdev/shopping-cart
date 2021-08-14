@@ -8,11 +8,14 @@ const Submenu = (props) => {
         props.hideMenu()
         props.hideSubmenu()
     }
-
+    const transformLink = (str) => {
+        str = str.replace(/\s+/g, '-').toLowerCase();
+        return str
+    } 
     return (
         <div className={props.showSubmenu ? `submenu open ${props.cat}-submenu` : `submenu ${props.cat}-submenu`}>
             {props.subMenuItems.map((item, i) => 
-                <Link className="submenu-link" onClick={handleClick} to={`/shop/category/${props.cat}/${item.toLowerCase()}`} key={i}>
+                <Link className="submenu-link" onClick={handleClick} to={`/shop/category/${props.cat}/${transformLink(item).toLowerCase()}`} key={i}>
                     <h5>{item.toLowerCase()}</h5>
                 </Link>
             )}

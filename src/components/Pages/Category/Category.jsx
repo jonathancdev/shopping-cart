@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 
 const Category = (props) => {
 
-
     const parse = (param) => {
         if (param === "brands") {
             const parsed = "brand"
@@ -11,10 +10,18 @@ const Category = (props) => {
         } else if (param === "color") {
             const parsed = "type"
             return parsed
-        }    else {
+        } else if (param === "black-and-white-negative") {
+            const parsed = "black-and-white negative"
+            return parsed
+        } 
+        else if (param === "color-negative") {
+            const parsed = "color negative"
+            return parsed
+        }  else {
             return param
         }
     }
+    
 
     const transformLink = (str) => {
         str = str.replace(/\s+/g, '-').toLowerCase();
@@ -22,7 +29,7 @@ const Category = (props) => {
     } 
 
     const category = parse(props.match.params.category)
-    const subcategory = props.match.params.subcategory
+    const subcategory = parse(props.match.params.subcategory)
 
     const filterItems = () => {
         const itemCat = category

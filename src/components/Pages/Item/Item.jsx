@@ -15,8 +15,6 @@ const Item = (props) => {
     const [added, setAdded] = useState(false)
     const filter = props.items.filter((item) => item.title.toLowerCase() == transformLink(props.match.params.title))
     const item = filter[0]
-    const uniqueId = (item.brand + item.title + item.format + item.price).replace(/\s/g, '')
-
 
     const handleClick = () => {
         props.addToCart(createObject())
@@ -25,7 +23,7 @@ const Item = (props) => {
 
     const createObject = () => {
         const obj = {
-            cartId: uniqueId,
+            cartId: item.uniqueId,
             brand: item.brand,
             title: item.title,
             price: item.price,
@@ -41,7 +39,7 @@ const Item = (props) => {
         setAdded(true)
         setTimeout(() => setAdded(false), 4000)
     }
-
+console.log(item)
     return (
         <div className='page item'>
             <div className='item-page-wrap'>

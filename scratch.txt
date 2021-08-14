@@ -1,41 +1,7 @@
-thursday aug 12
-cart icon added
-
-shopping cart logic:
-
-add to cart button have checkmark when added, allow second add (see asos on figma)
-where to hold state?
-create unique ids for each products
-
-when added to cart, new cart object created
-item (plus all item details)
-quantity
-methods (increment / decrement quantity, check for zero?, remove from cart)
-if productid already in cart, increment
-
-calculate quantity (sum of all cart object quantities)
-
-saturday aug 7:
-to do:
-    close all submenus when one is clicked
-    look at odin and limit scope of project this time
-
-friday aug 6:
-to do:
-    *leftovers*
-    close all submenus when one is clicked
-    animate submenu OK
-    style menu OK
-    look at odin and limit scope of project this time
-
-    submenu categories OK
-    fix routing/links to categories OK
-    and individual products (messed up strings from fixing previous fakeShopAPI) OK
-    come up with name and start logo design OK
-
-thursday aug 5
-to do: 
-    push to github OK
-    figure out what needs to be fetched and what json needs created OK
-    come up with name and start logo design
-
+to do: smooth add to cart animation
+        style search results better
+        fix broken links
+        add at least 10 120films, more better
+        fix pages that don't refresh because of missing info (use conditional?)
+        style generic page parts better (this is the blah blah)
+        add filtering within the category and main shop page

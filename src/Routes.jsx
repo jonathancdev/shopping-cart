@@ -38,6 +38,7 @@ const Routes = () => {
     const fetchItems = async () => {
         const data = await fetch('http://localhost:3500/items.json')
         const items = await data.json()
+        items.items.map(item => item.uniqueId = (item.brand + item.title + item.format + item.price).replace(/\s/g, ''))
         setItems(items.items)
     }
     const addToCart = (obj) => {
@@ -61,8 +62,6 @@ const Routes = () => {
     const toggleMenu = () => setShowMenu(!showMenu);
     const hideMenu = () => setShowMenu(false)
 
-    console.log(shoppingCart)
-
     return (
         <BrowserRouter>
             <ScrollToTop/>
@@ -78,7 +77,9 @@ const Routes = () => {
 
             <Switch>
                 <Route exact path='/' 
-                    component={Home}
+                    render={(props) => (
+                        <Home {...props} items={items}/>
+                    )}
                 />
                 <Route exact path='/shop' 
                     render={(props) => (
