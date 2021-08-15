@@ -62,9 +62,10 @@ const Home = (props) => {
             <div className="home-banner-wrap search">
                 <div className="home-banner search">
 
-                        <SearchBar items={props.items}/>
+                        
 
                 </div>
+                <SearchBar items={props.items}/>
             </div>
 
         </div>

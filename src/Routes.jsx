@@ -62,6 +62,8 @@ const Routes = () => {
     const toggleMenu = () => setShowMenu(!showMenu);
     const hideMenu = () => setShowMenu(false)
 
+    console.log(items.filter((item) => item.title.includes("-")))
+
     return (
         <BrowserRouter>
             <ScrollToTop/>
@@ -72,7 +74,6 @@ const Routes = () => {
             closeActiveMenu={closeActiveMenu}
             shoppingCart={shoppingCart}
             />
-
             <Menu cats={cats} showMenu={showMenu} hideMenu={hideMenu} activeMenuItem={activeMenuItem} onOpen={onOpen}/>
 
             <Switch>
@@ -91,11 +92,12 @@ const Routes = () => {
                         <Category {...props} items={items} />
                     )}
                 />
-                <Route exact path='/shop/item/:title' 
+                <Route exact path='/shop/item/:format/:title' 
                 render={(props) => (
                     <Item {...props} items={items} addToCart={addToCart}/>
                 )}
                 />
+                
                 <Route path='/cart' 
                 render={(props) => (
                     <Cart {...props} shoppingCart={shoppingCart}/>

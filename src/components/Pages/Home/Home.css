@@ -56,12 +56,16 @@
     align-items: flex-end;
     justify-content: space-between;
 }
+.home-banner h1 {
+    font-size: 36px;
+    margin-left: -35px;
+}
 .home-banner.search {
     flex-direction: column;
     align-items: center;
 
 }
-.home-banner.search div {
+.home-banner div {
     display: flex;
     align-items: center;
 }
@@ -76,21 +80,21 @@
 }
 .home-banner-arrow {
     position: absolute;
-    font-size: 24px;
-    margin: 4px 0px 20px 247px;
+    font-size: 32px;
+    margin: 4px 0px 17px 230px;
     color: #084C61;
 }
 .home-banner-search-icon {
     position: absolute;
     font-size: 20px;
-    margin: 4px 0px 15px 280px;
+    margin: 15px 0px 15px 280px;
     color: #084C61;
 }
 .input-search {
-    width: 325px;
+    width: 320px;
     height: 30px;
     font-size: 18px;
-    text-align: center;
+    padding-left: 10px;
     background-color: #fff4df;
     color: #084C61;
 }

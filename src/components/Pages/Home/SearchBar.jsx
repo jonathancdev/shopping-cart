@@ -5,7 +5,7 @@ import './SearchBar.css'
 const SearchBar = (props) => {
 
     const [userInput, setUserInput] = useState('')
-    const [searchValue, setSearchValue] = useState(null)
+    const [searchValue, setSearchValue] = useState('')
     const [active, setActive] = useState(false)
 
     const searchField = useRef()
@@ -16,9 +16,8 @@ const SearchBar = (props) => {
         })
 
     const searchItems = (array, search) => {
-        if (searchValue !== null && searchValue !== '') {
-            const items = stringifyItems
-            const filtered = items.filter((item) => item.string.includes(search.toLowerCase()))
+        if (search !== '') {
+            const filtered = array.filter((item) => item.string.includes(search.toLowerCase()))
             return filtered.map((item) => props.items[item.index])
         } else {
             return [];
@@ -37,6 +36,8 @@ const SearchBar = (props) => {
 
     const searchBlur = () => {
         setActive(false)
+        searchField.current.value = ''
+        setTimeout(() => { setSearchValue('')}, 500)
     }
 
     const transformLink = (str) => {
@@ -59,12 +60,23 @@ console.log(filteredItems)
          }
         </>
 
-        <div className={active ? "search-results active" : "search-results"}>
+        <div className={active && searchValue !== '' ? "search-results active" : "search-results"}>
             <ul className="search-results-list">
 
                 {filteredItems.length > 0  ? 
                 filteredItems.map((item) => 
-                <Link className="search-results-item" to={`/shop/item/${transformLink(item.title)}`}>{item.brand} {item.title}
+                <Link to={`/shop/item/${item.format}/${transformLink(item.title)}`}>
+                    <div className="search-results-item">
+                        <div className="search-title">
+                            <h3>{item.brand}</h3>
+                            <h4>{item.title}</h4>
+                        </div>
+                        <div className="search-details">
+                            <p>{item.format}</p>
+                            <p>{item.type}</p>
+                            <p>iso: {item.iso}</p>
+                        </div>
+                    </div>
                 </Link>)
                 : null}
 

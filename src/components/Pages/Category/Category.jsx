@@ -54,7 +54,7 @@ const Category = (props) => {
             <div className="items-grid">
                 {catItems.map(item =>
                     <div className='item-wrap' key={item.id}>
-                        <Link to={`/shop/item/${transformLink(item.title)}`}>
+                        <Link to={`/shop/item/${item.format}/${transformLink(item.title)}`}>
                         <h3 className="item-brand">{item.brand.toUpperCase()}</h3>
                         <div className="item-img-wrap">
                             <img className="item-img" src={item.image}></img>

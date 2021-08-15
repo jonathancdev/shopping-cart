@@ -4,16 +4,27 @@ import './Item.css';
 const Item = (props) => {
 
     const transformLink = (str) => {
-        if (str === "fujicolor-superia-x-tra400") {
-            str = "fujicolor superia x-tra400"
+        const conditions = ['i-', 't-', 'x-']
+        if(conditions.some((cond) => str.includes(cond))) {
+            const filter = conditions.filter(cond => str.includes(cond))
+            const index = str.search(filter[0])
+            const match = str.slice(index, index + filter[0].length)
+            const replace1 = match.replace(/-/g, '!')
+            str = str.replace(filter[0], replace1)
+            str = str.replace(/-/g, ' ');
+            str = str.replace(/!/g, '-').toLowerCase()
             return str
         } else {
-            str = str.replace(/-/g, ' ').toLowerCase();
+            str = str.replace(/-/g, ' ');
             return str
         }
     }
     const [added, setAdded] = useState(false)
-    const filter = props.items.filter((item) => item.title.toLowerCase() == transformLink(props.match.params.title))
+    const filter = props.items
+                    .filter((item) => item.title.toLowerCase() == transformLink(props.match.params.title))
+                    .filter((item) => item.format === props.match.params.format)
+    console.log(filter)
+    console.log(props.match.params)
     const item = filter[0]
 
     const handleClick = () => {
@@ -39,7 +50,7 @@ const Item = (props) => {
         setAdded(true)
         setTimeout(() => setAdded(false), 4000)
     }
-console.log(item)
+
     return (
         <div className='page item'>
             <div className='item-page-wrap'>
