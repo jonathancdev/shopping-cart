@@ -70,10 +70,10 @@
           "id": 7,
           "brand": "Fujifilm",
           "title": "Neopan Acros 100II",
-          "description": "Neopan Acros 100II is Fujifilm Professional's newest addition to its family of films. Neopan 100 Acros II is a medium speed, ultra-high-image quality black-and-white negative film and features the world's highest standard in grain quality among ISO 100 films.",
+          "description": "Neopan Acros 100II is Fujifilm Professional's newest addition to its family of films. Neopan 100 Acros II is a medium speed, ultra-high-image quality Black and white negative film and features the world's highest standard in grain quality among ISO 100 films.",
           "iso": "100",
           "format": "35mm",
-          "type": "Black-and-white negative",
+          "type": "Black and white",
           "price": "12",
           "image": "http://localhost:3500/src/img/items/neopanacros100ii.png"
         },
@@ -128,7 +128,7 @@
           "description": "Kodak's Professional Tri-X 400 Black and White Negative Film is a classic high-speed panchromatic film designed for a wide array of shooting conditions. Characterized by its fine grain quality, notable edge sharpness, and high resolving power, Tri-X 400 also exhibits a wide exposure latitude with consistent tonality.",
           "iso": "400",
           "format": "35mm",
-          "type": "Black-and-white negative",
+          "type": "Black and white",
           "price": "9",
           "image": "http://localhost:3500/src/img/items/tri-x400.png"
         },
@@ -150,7 +150,7 @@
           "description": "Kodak's Professional T-Max 400 is a high-speed panchromatic black and white negative film featuring a unique T-GRAIN emulsion to provide a very fine grain structure with a high degree of sharpness and edge detail. It has a nominal sensitivity of ISO 400/27° along with a wide exposure latitude for rating the film up to EI 1600 and push developing.",
           "iso": "400",
           "format": "35mm",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "8",
           "image": "http://localhost:3500/src/img/items/t-max400.png"
         },
@@ -183,7 +183,7 @@
           "description": "Kodak Professional T-Max P3200 is an ultra-high-speed panchromatic black and white negative film characterized by its unique T-GRAIN emulsion, relatively fine grain structure, and high sharpness. It has a nominal sensitivity of ISO 3200/36°, however is categorized as a multi-speed film with a wide exposure latitude from EI 400-25,000 when pushed or pulled.",
           "iso": "3200",
           "format": "35mm",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "11",
           "image": "http://localhost:3500/src/img/items/t-maxp3200.png"
         },
@@ -216,7 +216,7 @@
           "description": "35mm, ISO 80 orthochromatic black & white film with fine grain and sharpness – perfect for stunning landscapes.",
           "iso": "80",
           "format": "35mm",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "11",
           "image": "http://localhost:3500/src/img/items/orthoplus.png"
         },
@@ -227,7 +227,7 @@
           "description": "35mm, ISO 100, medium speed, exceptionally fine grain, black & white film. Ideal for uncompromising image makers who want to capture maximum detail and sharpness.",
           "iso": "100",
           "format": "35mm",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "8",
           "image": "http://localhost:3500/src/img/items/delta100.png"
         },
@@ -238,7 +238,7 @@
           "description": "35mm, EI 3200, exceptionally high speed black & white film. Ideal for fast action and low light photography.",
           "iso": "3200",
           "format": "35mm",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "9",
           "image": "http://localhost:3500/src/img/items/delta3200.png"
         },
@@ -249,7 +249,7 @@
           "description": "35mm, ISO 400, high speed, maximum sharpness, black & white film. Ideal for most photographic applications or genres.",
           "iso": "400",
           "format": "35mm",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "8",
           "image": "http://localhost:3500/src/img/items/delta400.png"
         },
@@ -260,7 +260,7 @@
           "description": "35mm, ISO 125, all-purpose black & white film with fine grain, medium contrast and outstanding sharpness. Ideal for most shooting scenarios in good light conditions.",
           "iso": "125",
           "format": "35mm",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "6",
           "image": "http://localhost:3500/src/img/items/fp4plus.png"
         },
@@ -271,7 +271,7 @@
           "description": "35mm, ISO 400, medium contrast, all-purpose black & white film. Ideal for action, documentary and available light photography.",
           "iso": "400",
           "format": "35mm",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "6",
           "image": "http://localhost:3500/src/img/items/hp5plus.png"
         },
@@ -282,7 +282,7 @@
           "description": "35mm, ISO 50, high contrast, super sharp black & white film with very fine grain. Ideal for studio photography and bright, natural light.",
           "iso": "50",
           "format": "35mm",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "8",
           "image": "http://localhost:3500/src/img/items/panfplus.png"
         },
@@ -293,7 +293,7 @@
           "description": "35mm, ISO 100, medium contrast, black & white film. Suitable for most applications in good lighting conditions.",
           "iso": "100",
           "format": "35mm",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "6",
           "image": "http://localhost:3500/src/img/items/pan100k.png"
         },
@@ -304,7 +304,7 @@
           "description": "35mm, ISO 400, high speed, all purpose, black & white film. Suitable for all general photography applications.",
           "iso": "400",
           "format": "35mm",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "6",
           "image": "http://localhost:3500/src/img/items/pan400k.png"
         },
@@ -337,7 +337,7 @@
           "description": "CineStill BwXX 35mm is a classic panchromatic black and white negative film for both outdoor and studio use. It has a variable base sensitivity of ISO 250 under daylight (5500K) and ISO 200 under tungsten lighting (3200K), and can be rated up to ISO 1600 with the appropriate processing compensation.",
           "iso": "250",
           "format": "35mm",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "11",
           "image": "http://localhost:3500/src/img/items/bwxx.png"
         },
@@ -348,7 +348,7 @@
           "description": " General purpose BW film with ISO 100/21°. Suitable for a a wide range of subjects, including portrait, landscape and architecture photography.",
           "iso": "100",
           "format": "35mm",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "5",
           "image": "http://localhost:3500/src/img/items/apx100.png"
         },
@@ -359,7 +359,7 @@
           "description": " General purpose BW film with ISO 400/27°. Suitable for a a wide range of subjects, including sport, action, street and low-light photography.",
           "iso": "400",
           "format": "35mm",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "5",
           "image": "http://localhost:3500/src/img/items/apx_400.png"
         },
@@ -400,10 +400,10 @@
           "id": 37,
           "brand": "Fujifilm",
           "title": "Neopan Acros 100II",
-          "description": "Neopan Acros 100II is Fujifilm Professional's newest addition to its family of films. Neopan 100 Acros II is a medium speed, ultra-high-image quality black-and-white negative film and features the world's highest standard in grain quality among ISO 100 films.",
+          "description": "Neopan Acros 100II is Fujifilm Professional's newest addition to its family of films. Neopan 100 Acros II is a medium speed, ultra-high-image quality Black and white negative film and features the world's highest standard in grain quality among ISO 100 films.",
           "iso": "100",
           "format": "120",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "12",
           "image": "http://localhost:3500/src/img/items/acros120.png"
         },
@@ -524,7 +524,7 @@
           "description": "Kodak's Professional T-Max 400 is a high-speed panchromatic black and white negative film featuring a unique T-GRAIN emulsion to provide a very fine grain structure with a high degree of sharpness and edge detail. It has a nominal sensitivity of ISO 400/27° along with a wide exposure latitude for rating the film up to EI 1600 and push developing.",
           "iso": "400",
           "format": "120",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "10",
           "image": "http://localhost:3500/src/img/items/tmax400120.png"
         },
@@ -535,7 +535,7 @@
           "description": "Kodak's Professional Tri-X 400 Black and White Negative Film is a classic high-speed panchromatic film designed for a wide array of shooting conditions. Characterized by its fine grain quality, notable edge sharpness, and high resolving power, Tri-X 400 also exhibits a wide exposure latitude with consistent tonality.",
           "iso": "400",
           "format": "120",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "10",
           "image": "http://localhost:3500/src/img/items/trix400120.png"
         },
@@ -546,7 +546,7 @@
           "description": "120 roll film for medium format cameras. ISO 100, medium speed, exceptionally fine grain, black & white film. Ideal for uncompromising image makers who want to capture maximum detail and sharpness.",
           "iso": "100",
           "format": "120",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "7",
           "image": "http://localhost:3500/src/img/items/delta100120.png"
         },
@@ -557,7 +557,7 @@
           "description": "Medium format, ISO 80 orthochromatic black & white film with fine grain and sharpness – perfect for stunning landscapes.",
           "iso": "80",
           "format": "120",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "11",
           "image": "http://localhost:3500/src/img/items/ortho120.png"
         },
@@ -568,7 +568,7 @@
           "description": "120 roll film for medium format cameras. EI 3200, exceptionally high speed black & white film. Ideal for fast action and low light photography.",
           "iso": "3200",
           "format": "120",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "9",
           "image": "http://localhost:3500/src/img/items/delta3200120.png"
         },
@@ -579,7 +579,7 @@
           "description": "120 roll film for medium format cameras. ISO 400, high speed, maximum sharpness, black & white film. Ideal for most photographic applications or genres.",
           "iso": "400",
           "format": "120",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "8",
           "image": "http://localhost:3500/src/img/items/delta400120.png"
         },
@@ -590,7 +590,7 @@
           "description": "120 roll film for medium format cameras. ISO 125, all-purpose black & white film with fine grain, medium contrast and outstanding sharpness. Ideal for most shooting scenarios in good light conditions.",
           "iso": "125",
           "format": "120",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "7",
           "image": "http://localhost:3500/src/img/items/fp4120.png"
         },
@@ -601,7 +601,7 @@
           "description": "120 roll film for medium format cameras. ISO 400, medium contrast, all-purpose black & white film. Ideal for action, documentary and available light photography.",
           "iso": "400",
           "format": "120",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "7",
           "image": "http://localhost:3500/src/img/items/hp5120.png"
         },
@@ -612,7 +612,7 @@
           "description": "120 roll film for medium format cameras. ISO 50, high contrast, super sharp black & white film with very fine grain. Ideal for studio photography and bright, natural light.",
           "iso": "50",
           "format": "120",
-          "type": "Black-and-white Negative",
+          "type": "Black and white",
           "price": "7",
           "image": "http://localhost:3500/src/img/items/panf120.png"
         },

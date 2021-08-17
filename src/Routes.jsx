@@ -39,7 +39,7 @@ const Routes = () => {
         const data = await fetch('http://localhost:3500/items.json')
         const items = await data.json()
         items.items.map(item => item.uniqueId = (item.brand + item.title + item.format + item.price).replace(/\s/g, ''))
-        setItems(items.items)
+        setItems(items.items.filter((item) => item.brand !== " "))
     }
     const addToCart = (obj) => {
         const prev = shoppingCart
@@ -61,8 +61,6 @@ const Routes = () => {
     }
     const toggleMenu = () => setShowMenu(!showMenu);
     const hideMenu = () => setShowMenu(false)
-
-    console.log(items.filter((item) => item.title.includes("-")))
 
     return (
         <BrowserRouter>
@@ -97,7 +95,7 @@ const Routes = () => {
                     <Item {...props} items={items} addToCart={addToCart}/>
                 )}
                 />
-                
+
                 <Route path='/cart' 
                 render={(props) => (
                     <Cart {...props} shoppingCart={shoppingCart}/>

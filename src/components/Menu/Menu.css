@@ -1,5 +1,5 @@
 .menu {
-    position: absolute;
+    position: fixed;
     transform: translateX(-105%);
     background-color: rgba(255, 255, 255, 0.815);
     min-height: 100vh;

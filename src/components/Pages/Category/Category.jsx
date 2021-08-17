@@ -10,14 +10,18 @@ const Category = (props) => {
         } else if (param === "color") {
             const parsed = "type"
             return parsed
-        } else if (param === "black-and-white-negative") {
-            const parsed = "black-and-white negative"
+        } else if (param === "black-and-white") {
+            const parsed = "black and white"
             return parsed
         } 
         else if (param === "color-negative") {
             const parsed = "color negative"
             return parsed
-        }  else {
+        }  
+        else if (param === "color-all") {
+            const parsed = ['color negative', 'slide']
+            return parsed
+        } else {
             return param
         }
     }
@@ -33,22 +37,23 @@ const Category = (props) => {
 
     const filterItems = () => {
         const itemCat = category
-        const filtered = props.items.filter(item => item[itemCat].toLowerCase() === subcategory)
-        return filtered
+        const itemSub = subcategory
+        if (typeof itemSub !== 'object') {
+            const filtered = props.items.filter(item => item[itemCat].toLowerCase() === itemSub)
+            return filtered
+        } else {
+            const filtered = props.items.filter(item => (item[itemCat].toLowerCase() === itemSub[0] || item[itemCat].toLowerCase() === itemSub[1]))
+            return filtered
+        }
     }
-    // const truncate = (str, max = 6) => {
-    //     const array = str.trim().split(' ');
-    //     const ellipsis = array.length > max ? '...' : '';
-      
-    //     return array.slice(0, max).join(' ') + ellipsis;
-    //   };
 
     const catItems = filterItems()
 
+    console.log(props.match.params)
     return (
         <div className='page category'>
             <div className="cat-header">
-                <h1>{category}: {subcategory}</h1>
+                <h1>{category}: {typeof subcategory === 'string' ? subcategory : 'color & slide'}</h1>
             </div>
 
             <div className="items-grid">
@@ -64,7 +69,7 @@ const Category = (props) => {
                             <div className="item-details">
                                 <span className="item-detail">iso: {item.iso}</span>
                                 <span className="item-detail">{item.format}</span>
-                                <span className="item-detail">{item.type.replace(/ .*/,'').toLowerCase()}</span>
+                                <span className="item-detail">{item.type.toLowerCase()}</span>
                             </div>
                             <p className="item-price">€{Number(item.price).toFixed(2)}</p>
                         </div>

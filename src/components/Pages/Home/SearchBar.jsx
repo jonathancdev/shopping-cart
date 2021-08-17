@@ -72,9 +72,9 @@ console.log(filteredItems)
                             <h4>{item.title}</h4>
                         </div>
                         <div className="search-details">
-                            <p>{item.format}</p>
-                            <p>{item.type}</p>
-                            <p>iso: {item.iso}</p>
+                            <p className="search-format">format: {item.format}</p>
+                            <p>{item.type.toLowerCase()}</p>
+                            <p>{item.iso} iso</p>
                         </div>
                     </div>
                 </Link>)

@@ -4,7 +4,7 @@ import './Item.css';
 const Item = (props) => {
 
     const transformLink = (str) => {
-        const conditions = ['i-', 't-', 'x-']
+        const conditions = ['i-', 't-', 'x-t']
         if(conditions.some((cond) => str.includes(cond))) {
             const filter = conditions.filter(cond => str.includes(cond))
             const index = str.search(filter[0])
@@ -19,13 +19,20 @@ const Item = (props) => {
             return str
         }
     }
-    const [added, setAdded] = useState(false)
+
     const filter = props.items
                     .filter((item) => item.title.toLowerCase() == transformLink(props.match.params.title))
                     .filter((item) => item.format === props.match.params.format)
-    console.log(filter)
-    console.log(props.match.params)
+
     const item = filter[0]
+
+    const [added, setAdded] = useState(false)
+    const [currItem, setCurrItem] = useState(item)
+
+    useEffect(() => {
+
+        setCurrItem(item)
+    })
 
     const handleClick = () => {
         props.addToCart(createObject())
@@ -51,10 +58,12 @@ const Item = (props) => {
         setTimeout(() => setAdded(false), 4000)
     }
 
+    console.log(currItem)
     return (
         <div className='page item'>
-            <div className='item-page-wrap'>
-                <h3 className="item-page-brand">{item.brand.toUpperCase()}</h3>
+            {currItem
+            ?<div className='item-page-wrap'>
+                <h3 className="item-page-brand">{currItem.brand.toUpperCase()}</h3>
                 <h4 className="item-page-title">{item.title}</h4>
                 <div className="item-page-img-wrap">
                     <img className="item-page-img" src={item.image}></img>
@@ -62,20 +71,19 @@ const Item = (props) => {
                 <div className="item-page-details">
                     <span className="item-page-detail">iso: {item.iso}</span>
                     <span className="item-page-detail">{item.format}</span>
-                    <span className="item-page-detail">{item.type.replace(/ .*/,'').toLowerCase()}</span>
+                    <span className="item-page-detail">{item.type.toLowerCase()}</span>
                 </div>
                 <p className="item-page-desc">{item.description}</p>
                 <div className="price-div">
                     <p className="item-page-price">€{Number(item.price).toFixed(2)}</p>
 
-                    <div className="cart-btn-div">
+                    <div onClick={handleClick} className="cart-btn-div">
 
                         <div className={added ? "added-icon-div active" : "added-icon-div"}>
                             <div className="added-icon"><i class="far fa-check-square"></i></div>
                         </div>
 
-                        <button className="cart-btn" 
-                            onClick={handleClick}
+                        <button className={added ? "cart-btn active" : "cart-btn"} 
                             disabled={added}
                             >
                             {added ? 'added to cart!' : 'add to cart'} 
@@ -84,15 +92,7 @@ const Item = (props) => {
                     </div>
                 </div>
             </div>
-            {/* <p>{item.brand}</p>
-            <p>{item.title}</p>
-            <p>{item.description}</p>
-            <p>{item.iso}</p>
-            <p>{item.format}</p>
-            <p>{item.type}</p>
-            <p>{item.price}</p>
-            <p>{item.title}</p>
-            <img src={item.image}></img> */}
+            : null}
         </div>
     )
 }

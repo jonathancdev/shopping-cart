@@ -1,0 +1,35 @@
+.options-wrap {
+    margin-top: 110px;
+    border: solid;
+    height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.sort-div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.sort-div p {
+    font-size: 12px;
+    width: 75px;
+}
+.sort-list {
+    width: 100%;
+    display: flex;
+    list-style: none;
+}
+.sort-list li {
+    font-size: 12px;
+    margin: 0 10px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.fitler-div {
+    border: dotted;
+    height: 40px;
+    width: 90%;
+}

@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom'
 import './Home.css'
-import home1 from '../../../img/home1.png'
-import home2 from '../../../img/home2.png'
-import home3 from '../../../img/home3.png'
-import home4 from '../../../img/home4.png'
+import home1 from '../../../img/rect-home/home1.png'
+import home2 from '../../../img/rect-home/home2.png'
+import home3 from '../../../img/rect-home/home3.png'
+import home4 from '../../../img/rect-home/home4.png'
 import SearchBar from './SearchBar'
 
 
@@ -15,7 +15,7 @@ const Home = (props) => {
 
             <div className="home-grid">
                 <div className="home-item-wrap">
-                <Link to='/shop/category/color/black-and-white-negative'>
+                <Link to='/shop/category/color/black-and-white'>
                     <div className="home-item-img-wrap">
                         <img src={home1} className="home-item-img" alt="black and white film" />
                     </div>
@@ -24,11 +24,11 @@ const Home = (props) => {
                 </div>
 
                 <div className="home-item-wrap">
-                <Link to='/shop/category/color/color-negative'>
+                <Link to='/shop/category/color/color-all'>
                     <div className="home-item-img-wrap">
                         <img src={home2} className="home-item-img" alt="color film" />
                     </div>
-                    <p className="home-item-title">color</p>
+                    <p className="home-item-title">color & slide</p>
                     </Link>
                 </div>
 
@@ -46,7 +46,7 @@ const Home = (props) => {
                     <div className="home-item-img-wrap">
                         <img src={home4} className="home-item-img" alt="120 film" />
                     </div>
-                    <p className="home-item-title">120</p>
+                    <p className="home-item-title">medium format</p>
                     </Link>
                 </div>
             </div>

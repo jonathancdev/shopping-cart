@@ -1,11 +1,9 @@
-        to do: smooth add to cart animation
-
-        menu should scroll page to top when opened
-
-        fix pages that don't refresh because of missing info (use conditional?)
-
         style generic page parts better (this is the blah blah)
 
         add filtering within the category and main shop page
+        -finished sorting functions, need to make separate functional component to 
+                import into category pages for example
+        
+        add filter buttons: same as on menu
 
         restyle item page

@@ -5,7 +5,6 @@ import cartIcon from '../../img/cart.png'
 
 const Nav = (props) => {
 
-    const [menuClosed, setMenuClosed] = useState(true)
     const cart = props.shoppingCart
     const cartCount = cart.reduce(
         (acc, currItem) => {

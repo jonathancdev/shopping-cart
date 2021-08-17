@@ -38,9 +38,10 @@
 }
 .search-results-list p {
     color: #084C61;
-    font-size: 10px;
+    font-size: 12px;
     padding: 0 5px;
 }
+
 .search-results-item {
     margin: 5px;
     background-color: #fff4df;
@@ -53,6 +54,7 @@
     width: 100%;
     display: flex;
     align-items: flex-end;
+    margin: 2.5px;
 }
 .search-results-item:hover {
     background-color: #ffd98a;
