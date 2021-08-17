@@ -51,14 +51,6 @@ const Home = (props) => {
                 </div>
             </div>
 
-            <div className="home-banner-wrap">
-            <Link to='/shop'>
-                    <div className="home-banner">
-                        <h1 className="home-banner-title">browse all film</h1>
-                    <i className="home-banner-arrow far fa-arrow-alt-circle-right"></i>
-                </div>
-            </Link>
-            </div>
             <div className="home-banner-wrap search">
                 <div className="home-banner search">
 
@@ -66,6 +58,15 @@ const Home = (props) => {
 
                 </div>
                 <SearchBar items={props.items}/>
+            </div>
+
+            <div className="home-banner-wrap">
+            <Link to='/shop'>
+                    <div className="home-banner">
+                        <h1 className="home-banner-title">browse all film</h1>
+                    <i className="home-banner-arrow far fa-arrow-alt-circle-right"></i>
+                </div>
+            </Link>
             </div>
 
         </div>

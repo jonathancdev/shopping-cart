@@ -1,7 +1,33 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
+import Options from '../../Options/Options'
+import Sort from '../../Utilities/Sort'
 
 const Category = (props) => {
+
+    useEffect( async () => {
+        fetchItems()
+    }, [])
+
+    const [items, setItems] = useState([])
+    const [sortBy, setSortBy] = useState('priceasc')
+
+    useEffect(() => {
+        const sorted = Sort(items, sortBy)
+        setItems([...sorted])
+    }, [sortBy])
+
+    const fetchItems = async () => {
+        const data = await fetch('http://localhost:3500/items.json')
+        const items = await data.json()
+        items.items.map(item => item.uniqueId = (item.brand + item.title + item.format + item.price).replace(/\s/g, ''))
+        setItems(items.items.filter((item) => item.brand !== " "))
+    }
+    
+    const setSortOption = (value) => {
+        console.log(value)
+        setSortBy(value)
+    }
 
     const parse = (param) => {
         if (param === "brands") {
@@ -39,19 +65,22 @@ const Category = (props) => {
         const itemCat = category
         const itemSub = subcategory
         if (typeof itemSub !== 'object') {
-            const filtered = props.items.filter(item => item[itemCat].toLowerCase() === itemSub)
+            const filtered = items.filter(item => item[itemCat].toLowerCase() === itemSub)
             return filtered
         } else {
-            const filtered = props.items.filter(item => (item[itemCat].toLowerCase() === itemSub[0] || item[itemCat].toLowerCase() === itemSub[1]))
+            const filtered = items.filter(item => (item[itemCat].toLowerCase() === itemSub[0] || item[itemCat].toLowerCase() === itemSub[1]))
             return filtered
         }
     }
 
     const catItems = filterItems()
 
-    console.log(props.match.params)
     return (
+        
         <div className='page category'>
+            <Options 
+                setSortOption={setSortOption}
+            />
             <div className="cat-header">
                 <h1>{category}: {typeof subcategory === 'string' ? subcategory : 'color & slide'}</h1>
             </div>

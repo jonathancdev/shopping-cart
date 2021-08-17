@@ -45,13 +45,17 @@ const SearchBar = (props) => {
         return str
     } 
 
-console.log(filteredItems)
-
-
     return (
         <>
         <label></label>
-        <input onFocus={searchFocus} onChange={searchListen} onBlur={searchBlur} ref={searchField} className="input-search" type="text" placeholder="search"/>
+        <input onFocus={searchFocus} 
+            onChange={searchListen} 
+            onBlur={searchBlur} 
+            ref={searchField} 
+            className={active ? "input-search active" : "input-search"} 
+            type="text" 
+            placeholder={active ? "" : "search"} 
+            />
         
         <>
         {!active ?

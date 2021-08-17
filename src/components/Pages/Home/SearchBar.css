@@ -1,3 +1,15 @@
+.input-search {
+    text-align: center;
+    width: 320px;
+    height: 30px;
+    font-size: 18px;
+    padding-left: 10px;
+    background-color: #fff4df;
+    color: #084C61;
+}
+.input-search.active {
+    text-align: start;
+}
 .search-results {
     position: absolute;
     background-color: #fff4df;
@@ -8,6 +20,7 @@
     flex-direction: column;
     justify-content: flex-start;
     transition: all 0.5s;
+    z-index: 1;
 }
 .search-results.active {
     opacity: 100%;

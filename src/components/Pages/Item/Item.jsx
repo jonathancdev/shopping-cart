@@ -58,7 +58,6 @@ const Item = (props) => {
         setTimeout(() => setAdded(false), 4000)
     }
 
-    console.log(currItem)
     return (
         <div className='page item'>
             {currItem
