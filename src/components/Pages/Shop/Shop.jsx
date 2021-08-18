@@ -3,46 +3,71 @@ import {Link} from 'react-router-dom';
 import './Shop.css';
 import Options from '../../Options/Options'
 import Sort from '../../Utilities/Sort'
+import Filter from '../../Utilities/Filter'
 
-const Shop = () => {
 
-    useEffect( async () => {
-        fetchItems()
-    }, [])
+const Shop = (props) => {
 
-    const [items, setItems] = useState([])
-    const [sortBy, setSortBy] = useState('priceasc')
+    // useEffect( async () => {
+    //     console.log('useeffect 1')
+    //     fetchItems()
+    // }, [])
 
-    useEffect(() => {
-        const sorted = Sort(items, sortBy)
-        setItems([...sorted])
-    }, [sortBy])
 
-    const fetchItems = async () => {
-        const data = await fetch('http://localhost:3500/items.json')
-        const items = await data.json()
-        items.items.map(item => item.uniqueId = (item.brand + item.title + item.format + item.price).replace(/\s/g, ''))
-        setItems(items.items.filter((item) => item.brand !== " "))
-    }
+    // const [filteredItems, setFilteredItems] = useState([])
+    // const [items, setItems] = useState([])
+    // const [sortBy, setSortBy] = useState('priceasc')
+    // const [filterBy, setFilterBy] = useState(null)
+
+    // let renderItems = filteredItems.length > 0 ? filteredItems : items;
+
+    // useEffect(() => {
+    //     console.log('useeffect 2')
+    //     const sorted = Sort(renderItems, sortBy)
+    //     renderItems = sorted
+    //     //setItems([...sorted])
+    // }, [sortBy, filteredItems])
+
+    // useEffect(() => {
+    //     console.log('useeffect 3')
+    //     if (filterBy !== null) {
+    //         const filtered = Filter(items, filterBy[0], filterBy[1])
+    //         console.log(filtered)
+    //         setFilteredItems([...filtered])
+    //     }
+    // }, [filterBy])
+
+    // const fetchItems = async () => { //sort alphabeticlly here?
+    //     const data = await fetch('http://localhost:3500/items.json')
+    //     const fetchedItems = await data.json()
+    //     fetchedItems.items.map(item => item.uniqueId = (item.brand + item.title + item.format + item.price).replace(/\s/g, ''))
+    //     setItems(fetchedItems.items.filter((item) => item.brand !== " "))
+    // }
 
     const transformLink = (str) => {
         str = str.replace(/\s+/g, '-').toLowerCase();
         return str
     }
 
-    const setSortOption = (value) => {
-        console.log(value)
-        setSortBy(value)
-    }
-    
+    // const setSortOption = (value) => {
+    //     console.log(value)
+    //     setSortBy(value)
+    // }
+
+    // const setFilterOption = (array) => {
+    //     console.log(array)
+    //     setFilterBy([...array])
+    // }
     return (
         <div className='page shop'>
             <Options 
-                setSortOption={setSortOption}
+                cats={props.cats}
+                setSortOption={props.setSortOption}
+                setFilterOption={props.setFilterOption}
             />
-            { items.length > 0
+            { props.items.length > 0
             ? <div className="items-grid">
-                 {items.map(item =>
+                 {props.items.map(item =>
                     <div className='item-wrap' key={item.id}>
                          <Link to={`/shop/item/${item.format}/${transformLink(item.title)}`}>
                         <h3 className="item-brand">{item.brand.toUpperCase()}</h3>
@@ -62,7 +87,7 @@ const Shop = () => {
                     </div>
                         )}
             </div>
-            : null }
+            : 'loading.........' }
         </div>
     )
 }

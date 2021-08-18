@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 
 export default function Sort(array, arg) {
-
 const items = array
 const sortByBrandAsc = (items) => {
     items.sort(function(a,b) {

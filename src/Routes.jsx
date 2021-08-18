@@ -9,26 +9,29 @@ import Shop from './components/Pages/Shop/Shop';
 import Item from './components/Pages/Item/Item';
 import Category from './components/Pages/Category/Category';
 import Cart from './components/Pages/Cart/Cart';
+import Sort from './components/Utilities/Sort'
+import Filter from './components/Utilities/Filter'
 
 const Routes = () => {
+
+
+    const [sortBy, setSortBy] = useState(null)
+    const [filterBy, setFilterBy] = useState(null)
 
     useEffect(() => {
         fetchCats();
         fetchItems()
-    }, [])
+    }, [sortBy, filterBy])
 
     const [showMenu, setShowMenu] = useState(false)
+
     const [cats, setCats] = useState([])
     const [items, setItems] = useState([])
-    const [activeMenuItem, setActiveMenuItem] = useState('null')
-    const [shoppingCart, setShoppingCart] = useState([])
 
-    const onOpen = (item) => {
-        setActiveMenuItem(item)
-    }
-    const closeActiveMenu = () => {
-        setActiveMenuItem(null)
-    }
+
+    const [activeMenuItem, setActiveMenuItem] = useState('null')
+
+    const [shoppingCart, setShoppingCart] = useState([])
 
     const fetchCats = async () => {
         const data = await fetch('http://localhost:3500/categories.json')
@@ -37,10 +40,30 @@ const Routes = () => {
     }
     const fetchItems = async () => {
         const data = await fetch('http://localhost:3500/items.json')
-        const items = await data.json()
-        items.items.map(item => item.uniqueId = (item.brand + item.title + item.format + item.price).replace(/\s/g, ''))
-        setItems(items.items.filter((item) => item.brand !== " "))
+        const obj = await data.json()
+        let items = obj.items.filter((item) => item.brand !== " ")
+        // items.items.sort(function(a,b) {
+        //     const itemA = a.brand.toUpperCase()
+        //     const itemB = b.brand.toUpperCase()
+        //     return (itemA < itemB) ? -1 : (itemA > itemB) ? 1 : 0;
+        // })
+        //items = Sort(items, sortBy)
+        sortBy !== null ? Sort(items, sortBy) : Sort(items, 'brandasc')
+        filterBy !== null ? items = Filter(items, filterBy[0], filterBy[1]) : console.log('null')
+        items.map(item => item.uniqueId = (item.brand + item.title + item.format + item.price).replace(/\s/g, ''))
+        setItems(items)
     }
+
+    //sort & filter functions to pass through to Options (shop and category)
+    const setSortOption = (value) => {
+        setSortBy(value)
+    }
+    const setFilterOption = (array) => {
+        console.log(array)
+        setFilterBy([...array])
+    }
+
+    //shopping cart functions
     const addToCart = (obj) => {
         const prev = shoppingCart
         const item = obj
@@ -58,6 +81,13 @@ const Routes = () => {
         const cart = shoppingCart
         const idList = cart.map((item) => item.cartId)
         return idList.includes(obj.cartId)
+    }
+    //menu functions
+    const onOpen = (item) => {
+        setActiveMenuItem(item)
+    }
+    const closeActiveMenu = () => {
+        setActiveMenuItem(null)
     }
     const toggleMenu = () => setShowMenu(!showMenu);
     const hideMenu = () => setShowMenu(false)
@@ -82,12 +112,22 @@ const Routes = () => {
                 />
                 <Route exact path='/shop' 
                     render={(props) => (
-                        <Shop {...props} items={items} cats={cats} />
+                        <Shop {...props} 
+                            items={items} 
+                            cats={cats} 
+                            setSortOption={setSortOption}
+                            setFilterOption={setFilterOption}
+                            />
                     )}
                 />
                 <Route path='/shop/category/:category/:subcategory' 
                     render={(props) => (
-                        <Category {...props} items={items} />
+                        <Category {...props} 
+                            items={items} 
+                            cats={cats} 
+                            setSortOption={setSortOption}
+                            setFilterOption={setFilterOption}
+                            />
                     )}
                 />
                 <Route exact path='/shop/item/:format/:title' 

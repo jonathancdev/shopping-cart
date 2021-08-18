@@ -1,33 +1,33 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
+import './Category.css'
 import Options from '../../Options/Options'
 import Sort from '../../Utilities/Sort'
 
 const Category = (props) => {
 
-    useEffect( async () => {
-        fetchItems()
-    }, [])
+    // useEffect( async () => {
+    //     fetchItems()
+    // }, [])
 
     const [items, setItems] = useState([])
-    const [sortBy, setSortBy] = useState('priceasc')
+    // const [sortBy, setSortBy] = useState('priceasc')
 
-    useEffect(() => {
-        const sorted = Sort(items, sortBy)
-        setItems([...sorted])
-    }, [sortBy])
+    // useEffect(() => {
+    //     const sorted = Sort(items, sortBy)
+    //     setItems([...sorted])
+    // }, [sortBy])
 
-    const fetchItems = async () => {
-        const data = await fetch('http://localhost:3500/items.json')
-        const items = await data.json()
-        items.items.map(item => item.uniqueId = (item.brand + item.title + item.format + item.price).replace(/\s/g, ''))
-        setItems(items.items.filter((item) => item.brand !== " "))
-    }
-    
-    const setSortOption = (value) => {
-        console.log(value)
-        setSortBy(value)
-    }
+    // const fetchItems = async () => {
+    //     const data = await fetch('http://localhost:3500/items.json')
+    //     const items = await data.json()
+    //     items.items.map(item => item.uniqueId = (item.brand + item.title + item.format + item.price).replace(/\s/g, ''))
+    //     setItems(items.items.filter((item) => item.brand !== " "))
+    // }
+
+    // const setSortOption = (value) => {
+    //     setSortBy(value)
+    // }
 
     const parse = (param) => {
         if (param === "brands") {
@@ -65,21 +65,23 @@ const Category = (props) => {
         const itemCat = category
         const itemSub = subcategory
         if (typeof itemSub !== 'object') {
-            const filtered = items.filter(item => item[itemCat].toLowerCase() === itemSub)
+            const filtered = props.items.filter(item => item[itemCat].toLowerCase() === itemSub)
             return filtered
         } else {
-            const filtered = items.filter(item => (item[itemCat].toLowerCase() === itemSub[0] || item[itemCat].toLowerCase() === itemSub[1]))
+            const filtered = props.items.filter(item => (item[itemCat].toLowerCase() === itemSub[0] || item[itemCat].toLowerCase() === itemSub[1]))
             return filtered
         }
     }
 
     const catItems = filterItems()
-
+    
     return (
         
         <div className='page category'>
             <Options 
-                setSortOption={setSortOption}
+                cats={props.cats}
+                setSortOption={props.setSortOption}
+                setFilterOption={props.setFilterOption}
             />
             <div className="cat-header">
                 <h1>{category}: {typeof subcategory === 'string' ? subcategory : 'color & slide'}</h1>

@@ -4,15 +4,16 @@
 }
 .shop {
     margin: 80px auto;
+    width: 100%;
 }
 .items-grid {
+    width: 100%;
     margin: 25px;
     display: grid;
     align-items: center;
     justify-content: center;
     grid-template-columns: repeat(auto-fill, minmax(200px, 300px));
     grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
-
 }
 .item-wrap {
     padding: 15px;
