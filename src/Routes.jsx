@@ -59,8 +59,11 @@ const Routes = () => {
         setSortBy(value)
     }
     const setFilterOption = (array) => {
-        console.log(array)
+        if (array !== null) {
         setFilterBy([...array])
+        } else {
+            setFilterBy(array)
+        } 
     }
 
     //shopping cart functions

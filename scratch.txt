@@ -1,9 +1,16 @@
+
+        remove filters on unmount/on page leae, right now it keeps it so if you filter
+        and then go back to shop page, it keeps filter in place
+
+
         style generic page parts better (this is the blah blah)
 
-        add filtering within the category and main shop page
-        -finished sorting functions, need to make separate functional component to 
-                import into category pages for example
-        
-        add filter buttons: same as on menu
+        style options bar
 
         restyle item page
+
+        style shopping cart, shopping cart items
+
+
+
+

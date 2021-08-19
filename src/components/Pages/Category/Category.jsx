@@ -10,6 +10,15 @@ const Category = (props) => {
     //     fetchItems()
     // }, [])
 
+    useEffect(() => { //set filter and sort to original values when unmounted
+        console.log('mount')
+        return () => {
+            console.log('unmount')
+          props.setSortOption(null)
+          props.setFilterOption(null)
+        };
+      }, []);
+
     const [items, setItems] = useState([])
     // const [sortBy, setSortBy] = useState('priceasc')
 

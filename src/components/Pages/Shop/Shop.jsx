@@ -8,6 +8,15 @@ import Filter from '../../Utilities/Filter'
 
 const Shop = (props) => {
 
+    
+    useEffect(() => { //set filter and sort to original values when unmounted
+        console.log('mount')
+        return () => {
+            console.log('unmount')
+          props.setSortOption(null)
+          props.setFilterOption(null)
+        };
+      }, []);
     // useEffect( async () => {
     //     console.log('useeffect 1')
     //     fetchItems()
