@@ -91,10 +91,11 @@ const Category = (props) => {
                 cats={props.cats}
                 setSortOption={props.setSortOption}
                 setFilterOption={props.setFilterOption}
-            />
-            <div className="cat-header">
-                <h1>{category}: {typeof subcategory === 'string' ? subcategory : 'color & slide'}</h1>
-            </div>
+                >
+                <div className="shop-path">
+                shop / {category != 'type' ? category : 'color'} / {typeof subcategory === 'string' ? subcategory : 'color & slide'}
+                </div>
+            </Options>
 
             <div className="items-grid">
                 {catItems.map(item =>
@@ -107,9 +108,9 @@ const Category = (props) => {
                         <div className="item-info">
                             <h4 className="item-title">{item.title}</h4>
                             <div className="item-details">
-                                <span className="item-detail">iso: {item.iso}</span>
-                                <span className="item-detail">{item.format}</span>
-                                <span className="item-detail">{item.type.toLowerCase()}</span>
+                                <p>{item.format}</p>
+                                <p>{item.type.toLowerCase()}</p>
+                                <p>{item.iso} iso</p>
                             </div>
                             <p className="item-price">€{Number(item.price).toFixed(2)}</p>
                         </div>

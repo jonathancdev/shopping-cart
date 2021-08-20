@@ -73,7 +73,12 @@ const Shop = (props) => {
                 cats={props.cats}
                 setSortOption={props.setSortOption}
                 setFilterOption={props.setFilterOption}
-            />
+                >
+                <div className="shop-path">
+                shop / all film
+                </div>
+            </Options>
+
             { props.items.length > 0
             ? <div className="items-grid">
                  {props.items.map(item =>
@@ -86,9 +91,9 @@ const Shop = (props) => {
                         <div className="item-info">
                             <h4 className="item-title">{item.title}</h4>
                             <div className="item-details">
-                                <span className="item-detail">iso: {item.iso}</span>
-                                <span className="item-detail">{item.format}</span>
-                                <span className="item-detail">{item.type.toLowerCase()}</span>
+                                <p>{item.format}</p>
+                                <p>{item.type.toLowerCase()}</p>
+                                <p>{item.iso} iso</p>
                             </div>
                             <p className="item-price">€{Number(item.price).toFixed(2)}</p>
                         </div>

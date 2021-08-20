@@ -13,7 +13,18 @@ const Home = (props) => {
     return (
         <div className='page home'>
 
+
             <div className="home-grid">
+
+            <div className="home-banner-wrap">
+            <Link to='/shop'>
+                    <div className="home-banner">
+                        <h1 className="home-banner-title">browse all film</h1>
+                    <i className="home-banner-arrow far fa-arrow-alt-circle-right"></i>
+                </div>
+            </Link>
+            </div>
+
                 <div className="home-item-wrap">
                 <Link to='/shop/category/color/black-and-white'>
                     <div className="home-item-img-wrap">
@@ -58,15 +69,6 @@ const Home = (props) => {
 
                 </div>
                 <SearchBar items={props.items}/>
-            </div>
-
-            <div className="home-banner-wrap">
-            <Link to='/shop'>
-                    <div className="home-banner">
-                        <h1 className="home-banner-title">browse all film</h1>
-                    <i className="home-banner-arrow far fa-arrow-alt-circle-right"></i>
-                </div>
-            </Link>
             </div>
 
         </div>

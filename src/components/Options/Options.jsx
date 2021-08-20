@@ -79,6 +79,7 @@ const Options = (props) => {
                         <li className="sort-option" data-sort="branddesc" onClick={handleClick}><i class="fas fa-sort-alpha-down-alt"></i></li>
                     </ul>
                </div>
+               {props.children}
         </div>
     )
 }

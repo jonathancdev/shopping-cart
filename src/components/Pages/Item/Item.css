@@ -8,18 +8,22 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 }
 .item-page-brand, .item-page-title, .item-page-desc, .item-page-detail {
     font-weight: lighter;
 }
 .item-page-brand {
     font-size: 1.5rem;
+    align-self: flex-start;
+    font-weight: 150;
 }
 .item-page-title {
     font-size: 1.25rem;
+    align-self: flex-start;
 }
 .item-page-img-wrap {
-    margin: 0 auto;
+    margin: 10px auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,7 +32,7 @@
 }
 .item-page-img {
     padding: 5px;
-    max-height: 200px;
+    max-height: 180px;
     object-fit: contain;
 }
 
@@ -41,6 +45,7 @@
     padding: 0;
 }
 .item-page-details {
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
     color: rgba(0, 0, 0, 0.747);
@@ -49,6 +54,7 @@
 }
 .item-page-detail {
     font-size: 0.8rem;
+    font-weight: 400;
     color: rgba(0, 0, 0, 0.747);
 }
 .item-page-desc {

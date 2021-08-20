@@ -37,7 +37,7 @@
     height: 80%;
 }
 .item-img {
-    padding: 5px;
+    padding: 10px;
     max-height: 130px;
     object-fit: contain;
 }
@@ -65,14 +65,17 @@
     font-size: 1rem;
 }
 .item-details {
+    width: 225px;
+    font-size: 0.7rem;
     margin: 5px;
     display: flex;
     justify-content: space-between;
     min-width: 200px;
     color: rgba(0, 0, 0, 0.747);
 }
-.item-detail {
-    font-size: 0.8rem;
+.item-details p {
+    padding: 0 5px;
+
 }
 .item-price {
     text-align: center;

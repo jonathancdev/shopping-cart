@@ -80,6 +80,13 @@ const Routes = () => {
             setShoppingCart([...prev])
         }
     }
+    const decrementItem = (obj) => {
+        const prev = shoppingCart
+        const findId = prev.find(item => item.cartId === obj.cartId)
+        const index = prev.indexOf(findId)
+        prev[index].decrement()
+        setShoppingCart([...prev])
+    }
     const checkObj = (obj) => {
         const cart = shoppingCart
         const idList = cart.map((item) => item.cartId)
@@ -141,7 +148,7 @@ const Routes = () => {
 
                 <Route path='/cart' 
                 render={(props) => (
-                    <Cart {...props} shoppingCart={shoppingCart}/>
+                    <Cart {...props} addToCart={addToCart} decrementItem={decrementItem} shoppingCart={shoppingCart}/>
                 )}
                 />
             </Switch>

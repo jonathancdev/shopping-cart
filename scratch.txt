@@ -1,13 +1,8 @@
-
-        remove filters on unmount/on page leae, right now it keeps it so if you filter
-        and then go back to shop page, it keeps filter in place
-
+        show 'no results found' when nothing returned from filter
 
         style generic page parts better (this is the blah blah)
 
-        style options bar
-
-        restyle item page
+        restyle options bar
 
         style shopping cart, shopping cart items
 

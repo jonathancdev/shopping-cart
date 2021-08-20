@@ -46,6 +46,9 @@ const Item = (props) => {
             title: item.title,
             price: item.price,
             image: item.image,
+            type: item.type,
+            format: item.format,
+            iso: item.iso,
             quantity: 1,
             increment() { this.quantity += 1},
             decrement() { this.quantity -= 1}
@@ -68,9 +71,9 @@ const Item = (props) => {
                     <img className="item-page-img" src={item.image}></img>
                 </div>
                 <div className="item-page-details">
-                    <span className="item-page-detail">iso: {item.iso}</span>
                     <span className="item-page-detail">{item.format}</span>
                     <span className="item-page-detail">{item.type.toLowerCase()}</span>
+                    <span className="item-page-detail">{item.iso} iso</span>
                 </div>
                 <p className="item-page-desc">{item.description}</p>
                 <div className="price-div">
