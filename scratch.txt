@@ -1,11 +1,14 @@
-        show 'no results found' when nothing returned from filter
+        create checkout page with fake forms
+        
+
+        fix sort/filter options bar from showing on scroll
 
         style generic page parts better (this is the blah blah)
+        style "no items match" and "cart empty" pages as well
 
         restyle options bar
 
-        style shopping cart, shopping cart items
-
-
+        title overflow in shopping cart
+(provia 100f at least)
 
 

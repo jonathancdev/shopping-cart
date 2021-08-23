@@ -2,12 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import './Shop.css';
 import Options from '../../Options/Options'
-import Sort from '../../Utilities/Sort'
-import Filter from '../../Utilities/Filter'
-
+import ItemPreview from '../../ItemPreview'
 
 const Shop = (props) => {
-
     
     useEffect(() => { //set filter and sort to original values when unmounted
         console.log('mount')
@@ -17,56 +14,8 @@ const Shop = (props) => {
           props.setFilterOption(null)
         };
       }, []);
-    // useEffect( async () => {
-    //     console.log('useeffect 1')
-    //     fetchItems()
-    // }, [])
 
 
-    // const [filteredItems, setFilteredItems] = useState([])
-    // const [items, setItems] = useState([])
-    // const [sortBy, setSortBy] = useState('priceasc')
-    // const [filterBy, setFilterBy] = useState(null)
-
-    // let renderItems = filteredItems.length > 0 ? filteredItems : items;
-
-    // useEffect(() => {
-    //     console.log('useeffect 2')
-    //     const sorted = Sort(renderItems, sortBy)
-    //     renderItems = sorted
-    //     //setItems([...sorted])
-    // }, [sortBy, filteredItems])
-
-    // useEffect(() => {
-    //     console.log('useeffect 3')
-    //     if (filterBy !== null) {
-    //         const filtered = Filter(items, filterBy[0], filterBy[1])
-    //         console.log(filtered)
-    //         setFilteredItems([...filtered])
-    //     }
-    // }, [filterBy])
-
-    // const fetchItems = async () => { //sort alphabeticlly here?
-    //     const data = await fetch('http://localhost:3500/items.json')
-    //     const fetchedItems = await data.json()
-    //     fetchedItems.items.map(item => item.uniqueId = (item.brand + item.title + item.format + item.price).replace(/\s/g, ''))
-    //     setItems(fetchedItems.items.filter((item) => item.brand !== " "))
-    // }
-
-    const transformLink = (str) => {
-        str = str.replace(/\s+/g, '-').toLowerCase();
-        return str
-    }
-
-    // const setSortOption = (value) => {
-    //     console.log(value)
-    //     setSortBy(value)
-    // }
-
-    // const setFilterOption = (array) => {
-    //     console.log(array)
-    //     setFilterBy([...array])
-    // }
     return (
         <div className='page shop'>
             <Options 
@@ -82,23 +31,10 @@ const Shop = (props) => {
             { props.items.length > 0
             ? <div className="items-grid">
                  {props.items.map(item =>
-                    <div className='item-wrap' key={item.id}>
-                         <Link to={`/shop/item/${item.format}/${transformLink(item.title)}`}>
-                        <h3 className="item-brand">{item.brand.toUpperCase()}</h3>
-                        <div className="item-img-wrap">
-                            <img className="item-img" src={item.image}></img>
-                        </div>
-                        <div className="item-info">
-                            <h4 className="item-title">{item.title}</h4>
-                            <div className="item-details">
-                                <p>{item.format}</p>
-                                <p>{item.type.toLowerCase()}</p>
-                                <p>{item.iso} iso</p>
-                            </div>
-                            <p className="item-price">€{Number(item.price).toFixed(2)}</p>
-                        </div>
-                        </Link>
-                    </div>
+                    <ItemPreview
+                        addToCart={props.addToCart}
+                        item={item}
+                    />
                         )}
             </div>
             : 'loading.........' }

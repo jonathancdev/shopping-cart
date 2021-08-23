@@ -16,7 +16,7 @@
     grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
 }
 .item-wrap {
-    padding: 15px;
+    padding: 30px;
     margin: 10px 0;
     display: flex;
     flex-direction: column;
@@ -81,3 +81,34 @@
     text-align: center;
     font-size: 1.25rem;
 }
+.preview-add-btn-wrap {
+    position: absolute;
+    color: white;
+    margin-left: 240px;
+    margin-top: -4px;
+    background-color: #1096bf;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.125s ease-in;
+    border: none;
+}
+.preview-add-btn-wrap.active {
+    transform: scale(1.3);
+    background-color: #084C61;
+}
+.preview-item-plus {
+font-size: 20px;
+margin-top: -3px;
+font-weight: 600;
+}
+
+.preview-item-text {
+    font-size: 12px;
+    text-align: center;
+    font-weight: 500;
+    }

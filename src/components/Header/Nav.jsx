@@ -1,9 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom'
 import logo from '../../img/logo.png'
 import cartIcon from '../../img/cart.png'
 
 const Nav = (props) => {
+
+    const [newAnimation, setNewAnimation] = useState(false)
+
+    useEffect(() => {
+        setNewAnimation(true)
+        setTimeout(() => setNewAnimation(false), 400)
+    }, [props.shoppingCart])
 
     const cart = props.shoppingCart
     const cartCount = cart.reduce(
@@ -42,7 +49,7 @@ const Nav = (props) => {
                         <img className="cart" src={cartIcon} alt="cart icon"></img>
                         <>
                         {cartCount > 0
-                        ? <div className="cart-item-count">{cartCount}</div>
+                        ? <div className={!newAnimation ? "cart-item-count" : "cart-item-count active"}>{cartCount}</div>
                         : null}
                         </>
                     </div>

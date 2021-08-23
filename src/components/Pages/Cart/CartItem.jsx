@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 
 const CartItem = ({ item, cart, addToCart, decrementItem }) => {
 
-    console.log(cart)
-
-
     const handleIncrement = () => {
         addToCart(item)
     }

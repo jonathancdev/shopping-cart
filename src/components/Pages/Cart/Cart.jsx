@@ -5,8 +5,11 @@ import CartItem from '../Cart/CartItem'
 
 const Cart = (props) => {
 
-    console.log(props.shoppingCart.length)
+    console.log(props.shoppingCart)
     const cartItems = props.shoppingCart.filter(item => item.quantity > 0)
+
+    const total = props.shoppingCart.reduce((acc, curr) => parseInt(curr.price * curr.quantity) + parseInt(acc), 0)
+
     return (
         <div className='page cart'>
 
@@ -26,15 +29,7 @@ const Cart = (props) => {
             <div className="checkout-wrapper">
                 <div className="cart-total">
                     <p>Subtotal</p>
-                    <p className="total-value">99</p>
-                </div>
-                <div className="cart-total">
-                    <p>Shipping</p>
-                    <p className="total-value">FREE</p>
-                </div>
-                <div className="cart-total">
-                    <p>Total</p>
-                    <p className="total-value">99</p>
+                    <p className="total-value">€{total}.00</p>
                 </div>
                 <button className="checkout-btn">
                     check out

@@ -95,3 +95,15 @@ nav.open {
     font-size: 10px;
     font-weight: bolder;
 }
+.cart-item-count.active {
+    transform: scale3d(1.5);
+    animation: shake 0.4s cubic-bezier(.1,.01,.01,.02);
+}
+
+@keyframes shake {
+
+        0%, 100% {transform: translateX(0);} 
+        10%, 50% {transform: translateX(-2px);} 
+        30%, 70%  {transform: translateX(2px);} 
+     
+  }

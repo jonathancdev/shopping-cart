@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './Item.css';
+import createCartObject from '../../Utilities/createCartObject'
 
 const Item = (props) => {
 
@@ -35,26 +36,26 @@ const Item = (props) => {
     })
 
     const handleClick = () => {
-        props.addToCart(createObject())
+        props.addToCart(createCartObject(item))
         itemAddedCycle()
     }
 
-    const createObject = () => {
-        const obj = {
-            cartId: item.uniqueId,
-            brand: item.brand,
-            title: item.title,
-            price: item.price,
-            image: item.image,
-            type: item.type,
-            format: item.format,
-            iso: item.iso,
-            quantity: 1,
-            increment() { this.quantity += 1},
-            decrement() { this.quantity -= 1}
-        }
-        return obj
-    }
+    // const createObject = () => {
+    //     const obj = {
+    //         cartId: item.uniqueId,
+    //         brand: item.brand,
+    //         title: item.title,
+    //         price: item.price,
+    //         image: item.image,
+    //         type: item.type,
+    //         format: item.format,
+    //         iso: item.iso,
+    //         quantity: 1,
+    //         increment() { this.quantity += 1},
+    //         decrement() { this.quantity -= 1}
+    //     }
+    //     return obj
+    // }
 
     const itemAddedCycle = () => {
         setAdded(true)

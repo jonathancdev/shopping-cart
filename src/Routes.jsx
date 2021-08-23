@@ -68,6 +68,7 @@ const Routes = () => {
 
     //shopping cart functions
     const addToCart = (obj) => {
+        console.log('add to cart')
         const prev = shoppingCart
         const item = obj
         if (!checkObj(item)) {
@@ -84,8 +85,13 @@ const Routes = () => {
         const prev = shoppingCart
         const findId = prev.find(item => item.cartId === obj.cartId)
         const index = prev.indexOf(findId)
-        prev[index].decrement()
-        setShoppingCart([...prev])
+        if (obj.quantity > 1) {
+            prev[index].decrement()
+            setShoppingCart([...prev])
+        } else if (obj.quantity <= 1) {
+            prev.splice(index, 1)
+            setShoppingCart([...prev])
+        }
     }
     const checkObj = (obj) => {
         const cart = shoppingCart
@@ -127,6 +133,7 @@ const Routes = () => {
                             cats={cats} 
                             setSortOption={setSortOption}
                             setFilterOption={setFilterOption}
+                            addToCart={addToCart}
                             />
                     )}
                 />
@@ -137,6 +144,7 @@ const Routes = () => {
                             cats={cats} 
                             setSortOption={setSortOption}
                             setFilterOption={setFilterOption}
+                            addToCart={addToCart}
                             />
                     )}
                 />

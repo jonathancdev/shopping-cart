@@ -2,13 +2,10 @@ import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import './Category.css'
 import Options from '../../Options/Options'
-import Sort from '../../Utilities/Sort'
+import ItemPreview from '../../ItemPreview'
+
 
 const Category = (props) => {
-
-    // useEffect( async () => {
-    //     fetchItems()
-    // }, [])
 
     useEffect(() => { //set filter and sort to original values when unmounted
         console.log('mount')
@@ -20,23 +17,6 @@ const Category = (props) => {
       }, []);
 
     const [items, setItems] = useState([])
-    // const [sortBy, setSortBy] = useState('priceasc')
-
-    // useEffect(() => {
-    //     const sorted = Sort(items, sortBy)
-    //     setItems([...sorted])
-    // }, [sortBy])
-
-    // const fetchItems = async () => {
-    //     const data = await fetch('http://localhost:3500/items.json')
-    //     const items = await data.json()
-    //     items.items.map(item => item.uniqueId = (item.brand + item.title + item.format + item.price).replace(/\s/g, ''))
-    //     setItems(items.items.filter((item) => item.brand !== " "))
-    // }
-
-    // const setSortOption = (value) => {
-    //     setSortBy(value)
-    // }
 
     const parse = (param) => {
         if (param === "brands") {
@@ -60,12 +40,6 @@ const Category = (props) => {
             return param
         }
     }
-    
-
-    const transformLink = (str) => {
-        str = str.replace(/\s+/g, '-').toLowerCase();
-        return str
-    } 
 
     const category = parse(props.match.params.category)
     const subcategory = parse(props.match.params.subcategory)
@@ -84,6 +58,8 @@ const Category = (props) => {
 
     const catItems = filterItems()
     
+
+    console.log(catItems)
     return (
         
         <div className='page category'>
@@ -98,25 +74,14 @@ const Category = (props) => {
             </Options>
 
             <div className="items-grid">
-                {catItems.map(item =>
-                    <div className='item-wrap' key={item.id}>
-                        <Link to={`/shop/item/${item.format}/${transformLink(item.title)}`}>
-                        <h3 className="item-brand">{item.brand.toUpperCase()}</h3>
-                        <div className="item-img-wrap">
-                            <img className="item-img" src={item.image}></img>
-                        </div>
-                        <div className="item-info">
-                            <h4 className="item-title">{item.title}</h4>
-                            <div className="item-details">
-                                <p>{item.format}</p>
-                                <p>{item.type.toLowerCase()}</p>
-                                <p>{item.iso} iso</p>
-                            </div>
-                            <p className="item-price">€{Number(item.price).toFixed(2)}</p>
-                        </div>
-                        </Link>
-                    </div>
+                {catItems.length > 0
+                ?  <> {catItems.map(item =>
+                    <ItemPreview
+                    item={item}
+                    addToCart={props.addToCart}
+                />
                         )}
+                </>: 'no items match' }
             </div>
         </div>
     )
