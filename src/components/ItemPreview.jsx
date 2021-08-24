@@ -24,7 +24,7 @@ const ItemPreview = ( {item, addToCart} ) => {
 
                 <button className={added ? "preview-add-btn-wrap active" : "preview-add-btn-wrap"} onClick={handleClick} disabled={added}>
                     {!added
-                    ?<p className="preview-item-plus">+</p>
+                    ?<p className="preview-item-plus"><i class="fas fa-plus"></i></p>
                     : <p className="preview-item-text"><i class="fas fa-check"></i></p>}
                 </button>
 

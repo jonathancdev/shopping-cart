@@ -6,6 +6,8 @@
     padding-left: 10px;
     background-color: #fffaf0;
     color: #084C61;
+    border: none;
+    border-radius: 3px;
 }
 .input-search.active {
     text-align: start;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import './Cart.css'
 import '../Pages.css'
 import CartItem from '../Cart/CartItem'
@@ -31,9 +32,9 @@ const Cart = (props) => {
                     <p>Subtotal</p>
                     <p className="total-value">€{total}.00</p>
                 </div>
-                <button className="checkout-btn">
-                    check out
-                </button>
+                <Link to="/checkout">
+                    <button className="checkout-btn">check out</button>
+                </Link>
             </div>
             </>
             : <p>your shopping cart is empty</p> }

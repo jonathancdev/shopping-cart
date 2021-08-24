@@ -11,6 +11,7 @@ import Category from './components/Pages/Category/Category';
 import Cart from './components/Pages/Cart/Cart';
 import Sort from './components/Utilities/Sort'
 import Filter from './components/Utilities/Filter'
+import Checkout from './components/Pages/Checkout/Checkout'
 
 const Routes = () => {
 
@@ -157,6 +158,12 @@ const Routes = () => {
                 <Route path='/cart' 
                 render={(props) => (
                     <Cart {...props} addToCart={addToCart} decrementItem={decrementItem} shoppingCart={shoppingCart}/>
+                )}
+                />
+
+                <Route path='/checkout' 
+                render={(props) => (
+                    <Checkout {...props} shoppingCart={shoppingCart}/>
                 )}
                 />
             </Switch>

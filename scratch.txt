@@ -1,5 +1,6 @@
         create checkout page with fake forms
         
+        add to cart animation in item.jsx, maybe change to circle or checkmark w/ no border
 
         fix sort/filter options bar from showing on scroll
 
