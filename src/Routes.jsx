@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import './App.css'
+import './css/App.css'
 import ScrollToTop from './components/Utilities/ScrollToTop';
 import Header from './components/Header/Header';
 import Menu from './components/Menu/Menu'
@@ -24,7 +24,7 @@ const Routes = () => {
         fetchItems()
     }, [sortBy, filterBy])
 
-    const [showMenu, setShowMenu] = useState(false)
+    const [menuActive, setMenuActive] = useState(false)
 
     const [cats, setCats] = useState([])
     const [items, setItems] = useState([])
@@ -106,8 +106,8 @@ const Routes = () => {
     const closeActiveMenu = () => {
         setActiveMenuItem(null)
     }
-    const toggleMenu = () => setShowMenu(!showMenu);
-    const hideMenu = () => setShowMenu(false)
+    const toggleMenu = () => setMenuActive(!menuActive);
+    const hideMenu = () => setMenuActive(false)
 
     return (
         <BrowserRouter>
@@ -115,11 +115,11 @@ const Routes = () => {
             <Header 
             toggleMenu={toggleMenu} 
             hideMenu={hideMenu}
-            showMenu={showMenu}
+            menuActive={menuActive}
             closeActiveMenu={closeActiveMenu}
             shoppingCart={shoppingCart}
             />
-            <Menu cats={cats} showMenu={showMenu} hideMenu={hideMenu} activeMenuItem={activeMenuItem} onOpen={onOpen}/>
+            <Menu cats={cats} menuActive={menuActive} hideMenu={hideMenu} activeMenuItem={activeMenuItem} onOpen={onOpen}/>
 
             <Switch>
                 <Route exact path='/' 

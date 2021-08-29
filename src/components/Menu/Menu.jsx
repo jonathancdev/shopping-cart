@@ -13,7 +13,7 @@ const Menu = (props) => {
 
     const cats = Object.keys(props.cats)
     return (
-        <div className={props.showMenu ? 'menu open' : 'menu'}>
+        <div className={props.menuActive ? 'menu open' : 'menu'}>
             <div className="menu-wrapper">
 
                 {cats.map((cat, i) =>

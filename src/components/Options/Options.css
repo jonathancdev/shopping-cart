@@ -1,8 +1,4 @@
-.options-wrap *,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+
 .options-wrap .fas {
     color: #084C61;
     pointer-events: none;
