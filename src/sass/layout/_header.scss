@@ -11,7 +11,7 @@
     align-items: center;
     justify-content: space-around;
     background-color: a.$color-white;
-    transition: all 0.5s cubic-bezier(0.6, 0.04, 0.5, 1);
+    transition: all .5s cubic-bezier(.6, .04, .5, 1);
 
     &.open {
         background-color: a.$color-yellow-primary;
@@ -33,10 +33,10 @@
         width: 2.5rem;
         height: .2rem;
         background-color: a.$color-black;
-        transition: all .15s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        transition: all .15s cubic-bezier(.785, .135, .15, .86);
 
         &:nth-child(2) {
-            transition: all .2s ease-in-out;
+            transition: all .08s ease-in-out;
         }
     }
 
@@ -55,7 +55,7 @@
             }
             &:nth-child(2) {
                 width: 0px;
-                height: 1px;
+                height: .1rem;
             }
         }
     }
@@ -84,5 +84,5 @@
 }
 .cart-icon__counter.active {
     transform: scale3d(1.5);
-    animation: counterShake 0.4s cubic-bezier(.1,.01,.01,.02);
+    animation: counterShake .4s cubic-bezier(.1,.01,.01,.02);
 }
