@@ -1,41 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import {Link} from 'react-router-dom';
-import './Menu.css'
+import React from 'react';
+import { Link } from 'react-router-dom';
 import MenuItem from './MenuItem'
 
-const Menu = (props) => {
+const Menu = ( {cats, activeMenuItem, menuActive, hideMenu, onOpen} ) => {
 
-    // const [activeMenuItem, setActiveMenuItem] = useState('null')
+    const catKeys = Object.keys(cats)
 
-    // const onOpen = (item) => {
-    //     setActiveMenuItem(item)
-    // }
-
-    const cats = Object.keys(props.cats)
     return (
-        <div className={props.menuActive ? 'menu open' : 'menu'}>
-            <div className="menu-wrapper">
+        <div className={!menuActive ? 'menu' : 'menu open'}>
 
-                {cats.map((cat, i) =>
-                <div className='menu-cat' key={i}>
-                    <MenuItem cat={cat} cats={props.cats} hideMenu={props.hideMenu} activeMenuItem={props.activeMenuItem} onOpen={props.onOpen}/>
-                </div>
-                    )}
+            {catKeys.map((cat, i) =>
+            <>
+                <MenuItem 
+                    key={i} 
+                    cat={cat} 
+                    cats={cats} 
+                    hideMenu={hideMenu} 
+                    activeMenuItem={activeMenuItem} 
+                    onOpen={onOpen}
+                />
+            </>
+                )}
 
-                <Link onClick={props.hideMenu} to='/shop'>
-                    <div className="menu-cat">
-                        <h4>browse all film</h4>
-                    </div>
-                </Link>
-            </div>
+            <Link onClick={hideMenu} to='/shop' className="menu__item menu__link">
+                <button className="btn btn--menu">
+                    shop all film
+                </button>
+            </Link>
+
         </div>
     )
 }
 
 export default Menu;
-
-
-            //    {/* <Link onClick={props.hideMenu} to={`/shop/category/${cat.replace(/\s+|'/g, '-')}`}> */}
-            //    <Link onClick={props.hideMenu} to={`/shop/category/${cat[0]}`}>
-            //     <h4>{cat}</h4>
-            //     </Link>

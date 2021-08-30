@@ -1,0 +1,82 @@
+@use '../abstracts/' as a;
+
+//Menu.jsx
+.menu {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    margin-top: a.$header-height;
+    transform: translateX(-105%);
+    transition: all .3s cubic-bezier(.6, .04, .5, 1);
+    z-index: 1;
+
+    &.open {
+        background-color: a.$color-yellow-primary;
+        transform: translateX(0);
+    }
+
+    &__link { //browse all film link, should be same as menu__item
+        display: block; //gives a element height/top/bottom padding
+    }
+}
+
+//MenuItem.jsx
+.menu__item {
+    min-height: 5rem; //min-height so submenu will expand
+}
+
+.btn--menu {
+    background-color: inherit;
+    width: 100%;
+    padding: 1rem 4.5rem;
+    font-size: a.$menu-item-font-size;
+    color: a.$color-blue-darker;
+    font-weight: a.$menu-item-weight;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu--arrow {
+    color: a.$color-blue-darker;
+    font-size: a.$menu-item-font-size;
+}
+
+//Submenu.jsx
+.submenu {
+    width: 100vw;
+    padding: 0 4.5rem;
+    display: flex;
+    flex-direction: column;
+    max-height: 1rem;
+    background-color: a.$color-yellow-primary;
+    transform: translateX(-200rem);
+    transition: max-height .3s ease-in-out, background-color 1.75s ease, transform .4s ease-in-out;
+
+    .submenu__link {
+        display: block;
+        color: a.$color-blue-darker;
+        padding: .5rem;
+        font-size: a.$submenu-link-font-size;
+        font-weight: a.$submenu-link-weight;
+        transform: translateX(-200rem);
+        opacity: 0;
+        transition: transform .4s ease-in-out, opacity 1s ease;
+    }
+
+    &.open {
+        background-color: a.$color-yellow-lighter;
+        max-height: 30rem;
+        transform: translateX(0);
+
+        .submenu__link {
+            transform: translateX(0);
+            opacity: 100%;
+        }
+    }
+}
+
+.submenu--iso, .submenu--brands{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}

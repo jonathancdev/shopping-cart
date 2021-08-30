@@ -25,6 +25,11 @@ body {
   box-sizing: border-box;
 }
 
+.btn {
+  border: none;
+  cursor: pointer;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -34,10 +39,8 @@ body {
 a:link,
 a:visited {
   text-decoration: none;
-  color: #031b22;
 }
 
-/* MOBILE FIRST */
 .header {
   position: fixed;
   top: 0;
@@ -95,11 +98,11 @@ a:visited {
   height: 4rem;
 }
 
-.cart-icon__img {
+.cart--icon__img {
   height: 3.5rem;
 }
 
-.cart-icon__counter {
+.cart--icon__counter {
   position: absolute;
   margin-top: -4.7rem;
   margin-left: 1.2rem;
@@ -115,9 +118,82 @@ a:visited {
   font-weight: 800;
 }
 
-.cart-icon__counter.active {
+.cart--icon__counter.active {
   transform: scale3d(1.5);
   animation: counterShake 0.4s cubic-bezier(0.1, 0.01, 0.01, 0.02);
+}
+
+.menu {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  margin-top: 8rem;
+  transform: translateX(-105%);
+  transition: all 0.3s cubic-bezier(0.6, 0.04, 0.5, 1);
+  z-index: 1;
+}
+.menu.open {
+  background-color: #ffc857;
+  transform: translateX(0);
+}
+.menu__link {
+  display: block;
+}
+
+.menu__item {
+  min-height: 5rem;
+}
+
+.btn--menu {
+  background-color: inherit;
+  width: 100%;
+  padding: 1rem 4.5rem;
+  font-size: 3rem;
+  color: #084c61;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu--arrow {
+  color: #084c61;
+  font-size: 3rem;
+}
+
+.submenu {
+  width: 100vw;
+  padding: 0 4.5rem;
+  display: flex;
+  flex-direction: column;
+  max-height: 1rem;
+  background-color: #ffc857;
+  transform: translateX(-200rem);
+  transition: max-height 0.3s ease-in-out, background-color 1.75s ease, transform 0.4s ease-in-out;
+}
+.submenu .submenu__link {
+  display: block;
+  color: #084c61;
+  padding: 0.5rem;
+  font-size: 2.5rem;
+  font-weight: 500;
+  transform: translateX(-200rem);
+  opacity: 0;
+  transition: transform 0.4s ease-in-out, opacity 1s ease;
+}
+.submenu.open {
+  background-color: #ffde9b;
+  max-height: 30rem;
+  transform: translateX(0);
+}
+.submenu.open .submenu__link {
+  transform: translateX(0);
+  opacity: 100%;
+}
+
+.submenu--iso, .submenu--brands {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 /*# sourceMappingURL=App.css.map */

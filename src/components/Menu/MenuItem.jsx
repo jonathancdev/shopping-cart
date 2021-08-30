@@ -1,39 +1,38 @@
-import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import React, {useState} from 'react';
 import Submenu from './Submenu'
 
-const MenuItem = (props) => {
+const MenuItem = ( {activeMenuItem, cat, cats, hideMenu, onOpen} ) => {
 
     const [showSubmenu, setShowSubmenu] = useState(false)
 
     const toggleSubmenu = () => setShowSubmenu(!showSubmenu);
     const hideSubmenu = () => setShowSubmenu(false)
 
-    if (props.activeMenuItem !== props.cat && showSubmenu === true) {
-        hideSubmenu()
-        }
+    if (activeMenuItem !== cat && showSubmenu === true) {
+            hideSubmenu()
+    }
 
     const handleClick = () => {
         toggleSubmenu()
-        props.onOpen(props.cat)
+        onOpen(cat)
     }
 
     return (
-        <div className='menu-item'>
-            <button onClick={handleClick} className="menu-cat-btn">
-                <h4>{props.cat}</h4>
-                <i class={!showSubmenu ? "fas fa-angle-down" : "fas fa-angle-up"}></i>
+        <div className='menu__item'>
+
+            <button onClick={handleClick} className="btn btn--menu">
+                {cat}
+                <i class={!showSubmenu ? "fas fa-angle-down menu--arrow" : "fas fa-angle-up menu--arrow"}></i>
             </button>
 
-            <div className="submenu-cont">
-                        <Submenu
-                            subMenuItems={props.cats[props.cat]}
-                            cat={props.cat}
-                            hideMenu={props.hideMenu}
-                            hideSubmenu={hideSubmenu}
-                            showSubmenu={showSubmenu}
-                        />
-            </div> 
+            <Submenu
+                submenuItems={cats[cat]}
+                cat={cat}
+                hideMenu={hideMenu}
+                hideSubmenu={hideSubmenu}
+                showSubmenu={showSubmenu}
+            />
+
         </div>
     )
 }
