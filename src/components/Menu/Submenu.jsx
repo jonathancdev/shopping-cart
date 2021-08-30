@@ -17,7 +17,7 @@ const Submenu = ( {cat, submenuItems, hideMenu, hideSubmenu, showSubmenu} ) => {
             {submenuItems.map((item, i) => 
                 <Link
                     key={i}
-                    className="submenu__link" 
+                    className={!showSubmenu ? 'submenu__link' : 'submenu__link open'}
                     onClick={handleClick} 
                     to={`/shop/category/${cat}/${transformLink(item).toLowerCase()}`} 
                     >
