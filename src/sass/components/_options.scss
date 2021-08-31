@@ -1,8 +1,6 @@
-.shop-path {
-    
-}
+@use '../abstracts/' as a;
 
-.options-wrap .fas {
+.options .fas {
     color: #084C61;
     pointer-events: none;
 }
@@ -22,7 +20,7 @@
 .fa-sort-alpha-down, .fa-sort-alpha-down-alt {
     font-size: 20px;
 }
-.options-wrap {
+.options {
     margin-top: 10px;
     height: auto;
     width: 355px;
@@ -32,14 +30,14 @@
     align-items: center;
     background-color: #ffe9bd;
 }
-.sort-div {
+.options__ {
     width: 100%;
     display: flex;
     align-items: center;
     margin-left: 25px;
     padding: 0px 10px 0px 10px;
 }
-.sort-div h3 {
+.sort h3 {
     margin-right: 10px;
 }
 .sort-option i {
@@ -48,30 +46,30 @@
 .sort-option.active i{
     scale: 1.25;
 }
-.filter-div {
+.filter {
     width: 100%;
     display: flex;
     flex-direction: column;
     padding: 20px 10px 0px 10px;
 }
-.sort-div p, .filter-div p {
+.sort p, .filter p {
     font-size: 12px;
     width: 75px;
 }
-.sort-list, .filter-list {
+.sort__list, .filter__list {
     width: 100%;
     display: flex;
     margin: 3px;
     justify-content: flex-start;
     list-style: none;
 }
-.sort-list li {
+.sort__list li {
     margin: 5px 22.5px;
     font-size: 12px;
     cursor: pointer;
 }
 
-.filter-list li {
+.filter__list li {
     font-size: 12px;
     margin-right: 10px;
 }
@@ -99,7 +97,7 @@ select:focus + .focus { /* sfocuses adjacent sibling (span) with + selector */
     border: 2px solid blue;
     border-radius: inherit;
 }
-.select-div {
+.filter-data {
     position: relative;
     display: grid; /* allows ::after to use width */
     align-items: center;
@@ -116,7 +114,7 @@ select:focus + .focus { /* sfocuses adjacent sibling (span) with + selector */
     background-color: #fff4df;
 
 }
-.select-div::after {
+.filter-data::after { //down arrow in filter boxes
     justify-self: end;
     content: "";
     width: 10px;
@@ -127,10 +125,10 @@ select:focus + .focus { /* sfocuses adjacent sibling (span) with + selector */
 select, .select-div:after {
     grid-area: select;
 }
-.filter-select {
+.filter__select {
     padding: 5px 15px 5px 0px;
 }
-.filter-select.active {
+.filter__select.active {
 }
 label {
     font-size: 18px;

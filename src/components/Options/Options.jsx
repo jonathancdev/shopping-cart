@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import './Options.css'
 
 const Options = ( { children, cats, setFilterOption, setSortOption} ) => {
     
@@ -25,7 +24,7 @@ const Options = ( { children, cats, setFilterOption, setSortOption} ) => {
         e.target.classList.add('active')
         refs.current.forEach((select) => !select.current.className.includes('active') ? select.current.selectedIndex = 0 : null )
     }
-    
+
     //sort buttons
     const handleClick = (e) => {
         const childrenArray = Array.from(e.target.parentElement.children)
@@ -36,19 +35,22 @@ const Options = ( { children, cats, setFilterOption, setSortOption} ) => {
     }
 
     return (
-        <div className="options-wrap">
+        <div className="options">
 
-               <div className="filter-div">
-                    <ul ref={filterUl} className="filter-list">
+               <div className="filter">
+                    <ul ref={filterUl} className="filter__list">
+
                         {catKeys.map((item, i) => 
-                            <li className="filter-option">
+                            <li key={i} className="filter__item">
 
-                                <label for="filter-select">{item}</label>
-                                <div data-cat={item} className="select-div">
-                                    <select ref={refs.current[i]} id="filter-select" onChange={handleChange} className="filter-select" >
-                                        <option value=""> </option>
+                                <label className="filter__label" for="filter-select">{item}</label>
+                                {/* need div to use for data-cat */}
+                                <div data-cat={item} className="filter-data">
+                                    <select ref={refs.current[i]} onChange={handleChange} className="filter__select">
+                                        {/* blank first option */}
+                                        <option className="filter__option" value=""> </option>
                                     {cats[item].map((x) => 
-                                        <option value={x}>{x.toLowerCase()}</option>
+                                        <option className="filter__option" value={x}>{x.toLowerCase()}</option>
                                     )}
                                     </select>
                                     <span class="focus"></span>
@@ -56,28 +58,21 @@ const Options = ( { children, cats, setFilterOption, setSortOption} ) => {
 
                             </li>
                         )}
+
                     </ul>
                </div>
 
-               <div className="sort-div">
+               <div className="sort">
                     <h3>sort</h3>
-                    <ul className="sort-list">
-                        <li className="sort-option active" data-sort="priceasc" onClick={handleClick}>
-                            <div 
-                            className="euro-symbol-div" 
-                            >
-                                <i class="fas fa-euro-sign"></i>
-                                <i class="fas fa-arrow-up"></i>
-                            </div>
+                    <ul className="sort__list">
+                        <li className="sort__item active" data-sort="priceasc" key={"priceasc"} onClick={handleClick}>
+                                <i class="fas fa-arrow-up sort--arrow"></i>
                         </li>
-                        <li className="sort-option" data-sort="pricedesc" onClick={handleClick}>
-                            <div className="euro-symbol-div">
-                                <i class="fas fa-euro-sign"></i>
-                                <i class="fas fa-arrow-down"></i>
-                            </div>
+                        <li className="sort__item" data-sort="pricedesc" key={"pricedesc"} onClick={handleClick}>
+                                <i class="fas fa-arrow-down sort--arrow"></i>
                         </li>                        
-                        <li className="sort-option" data-sort="brandasc" onClick={handleClick}><i class="fas fa-sort-alpha-down"></i></li>
-                        <li className="sort-option" data-sort="branddesc" onClick={handleClick}><i class="fas fa-sort-alpha-down-alt"></i></li>
+                        <li className="sort__item" data-sort="brandasc" key={"brandasc"} onClick={handleClick}><i class="fas fa-sort-alpha-down sort--arrow"></i></li>
+                        <li className="sort__item" data-sort="branddesc" key={"branddesc"} onClick={handleClick}><i class="fas fa-sort-alpha-down-alt sort--arrow"></i></li>
                     </ul>
                </div>
                {children}

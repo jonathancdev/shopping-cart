@@ -28,8 +28,9 @@ const Shop = ( {cats, items, addToCart, setSortOption, setFilterOption} ) => {
                 { items.length > 0
                 ? 
                 <div className="grid">
-                    {items.map(item =>
+                    {items.map((item, i) =>
                         <ItemPreview
+                            key={item.uniqueId}
                             addToCart={addToCart}
                             item={item}
                         />
