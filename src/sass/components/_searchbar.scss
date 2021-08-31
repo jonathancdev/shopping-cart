@@ -50,7 +50,7 @@
     display: inline-block;
     margin: 0 .5rem;
     padding: 1rem 0;
-    width: 100%;
+    width: 97%; //to account for scrollbar covering right side
     
     &:hover {
         background-color: a.$color-yellow-lighter;

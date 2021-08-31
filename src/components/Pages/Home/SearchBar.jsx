@@ -37,7 +37,7 @@ const SearchBar = ( {items} ) => {
     const searchBlur = () => {
         setActive(false)
         searchField.current.value = ''
-        setTimeout(() => { setSearchValue('')}, 10) //stop ul from disappearing before click event on link is registered
+        setTimeout(() => { setSearchValue('')}, 75) //stop ul from disappearing before click event on link is registered
     }
 
     const transformLink = (str) => {

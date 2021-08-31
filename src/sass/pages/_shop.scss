@@ -1,0 +1,14 @@
+@use '../abstracts/' as a;
+
+.shop {
+    margin-top: a.$page-margin-top;
+    width: 100vw; //change to 100% for mobile - doesn't allow grid if too narrow obviously
+}
+.grid {
+    width: 100%;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 300px));
+    grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
+}

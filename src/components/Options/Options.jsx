@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
 import './Options.css'
 
-const Options = (props) => {
+const Options = ( { children, cats, setFilterOption, setSortOption} ) => {
     
     const filterUl = useRef()
     const refs = useRef([React.createRef(), React.createRef(), React.createRef(), React.createRef(),])
-    const cats = Object.keys(props.cats)
+    const catKeys = Object.keys(cats)
     
     //filter select
     const handleChange = (e) => {
@@ -18,20 +18,21 @@ const Options = (props) => {
             cat = "type"
         }
         const subcat = e.target.value.toLowerCase()
-        props.setFilterOption([cat, subcat])
+        setFilterOption([cat, subcat])
 
         //set active and reset unselected
         refs.current.forEach((select) => select.current.className.includes('active') ? select.current.classList.remove('active') : null )
         e.target.classList.add('active')
         refs.current.forEach((select) => !select.current.className.includes('active') ? select.current.selectedIndex = 0 : null )
     }
+    
     //sort buttons
     const handleClick = (e) => {
         const childrenArray = Array.from(e.target.parentElement.children)
         childrenArray.forEach((li) =>  li.className.includes('active') ? li.classList.remove('active') : null )
         e.target.classList.add('active')
         const sortBy = e.target.getAttribute('data-sort')
-        props.setSortOption(sortBy)
+        setSortOption(sortBy)
     }
 
     return (
@@ -39,14 +40,14 @@ const Options = (props) => {
 
                <div className="filter-div">
                     <ul ref={filterUl} className="filter-list">
-                        {cats.map((item, i) => 
+                        {catKeys.map((item, i) => 
                             <li className="filter-option">
 
                                 <label for="filter-select">{item}</label>
                                 <div data-cat={item} className="select-div">
                                     <select ref={refs.current[i]} id="filter-select" onChange={handleChange} className="filter-select" >
                                         <option value=""> </option>
-                                    {props.cats[item].map((x) => 
+                                    {cats[item].map((x) => 
                                         <option value={x}>{x.toLowerCase()}</option>
                                     )}
                                     </select>
@@ -79,7 +80,7 @@ const Options = (props) => {
                         <li className="sort-option" data-sort="branddesc" onClick={handleClick}><i class="fas fa-sort-alpha-down-alt"></i></li>
                     </ul>
                </div>
-               {props.children}
+               {children}
         </div>
     )
 }

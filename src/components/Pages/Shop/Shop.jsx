@@ -1,43 +1,44 @@
-import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
-import './Shop.css';
+import React, {useEffect} from 'react';
 import Options from '../../Options/Options'
 import ItemPreview from '../../ItemPreview'
 
-const Shop = (props) => {
+const Shop = ( {cats, items, addToCart, setSortOption, setFilterOption} ) => {
     
     useEffect(() => { //set filter and sort to original values when unmounted
-        console.log('mount')
         return () => {
-            console.log('unmount')
-          props.setSortOption(null)
-          props.setFilterOption(null)
+          setSortOption(null)
+          setFilterOption(null)
         };
       }, []);
 
-
     return (
-        <div className='page shop'>
-            <Options 
-                cats={props.cats}
-                setSortOption={props.setSortOption}
-                setFilterOption={props.setFilterOption}
-                >
-                <div className="shop-path">
-                shop / all film
-                </div>
-            </Options>
+        <div className='page'>
+            <div className="shop">
 
-            { props.items.length > 0
-            ? <div className="items-grid">
-                 {props.items.map(item =>
-                    <ItemPreview
-                        addToCart={props.addToCart}
-                        item={item}
-                    />
-                        )}
+                <Options 
+                    cats={cats}
+                    setSortOption={setSortOption}
+                    setFilterOption={setFilterOption}
+                    >
+                    <div className="shop-path">
+                    shop / all film
+                    </div>
+                </Options>
+
+                { items.length > 0
+                ? 
+                <div className="grid">
+                    {items.map(item =>
+                        <ItemPreview
+                            addToCart={addToCart}
+                            item={item}
+                        />
+                            )}
+                </div>
+                : 
+                'loading.........' }
+
             </div>
-            : 'loading.........' }
         </div>
     )
 }
