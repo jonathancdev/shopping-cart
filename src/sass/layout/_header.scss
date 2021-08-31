@@ -12,6 +12,7 @@
     justify-content: space-around;
     background-color: a.$color-white;
     transition: all .5s cubic-bezier(.6, .04, .5, 1);
+    z-index: 1;
 
     &.open {
         background-color: a.$color-yellow-primary;

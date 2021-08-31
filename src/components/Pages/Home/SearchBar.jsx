@@ -37,7 +37,7 @@ const SearchBar = ( {items} ) => {
     const searchBlur = () => {
         setActive(false)
         searchField.current.value = ''
-        setTimeout(() => { setSearchValue('')}, 500)
+        setTimeout(() => { setSearchValue('')}, 10) //stop ul from disappearing before click event on link is registered
     }
 
     const transformLink = (str) => {
@@ -66,7 +66,7 @@ const SearchBar = ( {items} ) => {
             <i class="fas fa-times search__icon--active"></i>
             }
             </div>
-
+            {/* !active && searchValue conditional is to stop ul from disappearing before click event on link is registered */}
             <ul className={!active && searchValue == '' ? "search-results__list" : "search-results__list active"}>
                 {filteredItems.length > 0  
                 ? 
