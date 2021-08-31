@@ -1,15 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom'
-import './SearchBar.css'
 
-const SearchBar = (props) => {
+const SearchBar = ( {items} ) => {
 
-    const [userInput, setUserInput] = useState('')
     const [searchValue, setSearchValue] = useState('')
     const [active, setActive] = useState(false)
 
     const searchField = useRef()
-    const stringifyItems = props.items.map((item, i) => {
+
+    const stringifyItems = items.map((item, i) => {
         return {string: (item.brand + ' ' + item.title).toLowerCase(),
                 index: i,
                 uniqueId: item.uniqueId}
@@ -18,11 +17,12 @@ const SearchBar = (props) => {
     const searchItems = (array, search) => {
         if (search !== '') {
             const filtered = array.filter((item) => item.string.includes(search.toLowerCase()))
-            return filtered.map((item) => props.items[item.index])
+            return filtered.map((item) => items[item.index])
         } else {
             return [];
         }
     }
+
     const filteredItems = searchItems(stringifyItems, searchValue)
 
     const searchListen = () => {
@@ -47,45 +47,47 @@ const SearchBar = (props) => {
 
     return (
         <>
-        <label></label>
-        <input onFocus={searchFocus} 
-            onChange={searchListen} 
-            onBlur={searchBlur} 
-            ref={searchField} 
-            className={active ? "input-search active" : "input-search"} 
-            type="text" 
-            placeholder={active ? "" : "search"} 
-            />
-        
-        <>
-        {!active ?
-        <i className="home-banner-search-icon fas fa-search"></i>
-        : <i class="home-banner-search-icon fas fa-times"></i>
-         }
-        </>
 
-        <div className={active && searchValue !== '' ? "search-results active" : "search-results"}>
-            <ul className="search-results-list">
+            <label className="search__label"></label>
+            <input className={!active ? "search__input" : "search__input active"} 
+                onFocus={searchFocus} 
+                onChange={searchListen} 
+                onBlur={searchBlur} 
+                ref={searchField} 
+                type="text" 
+                placeholder={!active ? "search" : ""} 
+                />
+            
+            <div className="search__icon">
+            {!active 
+            ?
+            <i className="fas fa-search search__icon--inactive"></i>
+            : 
+            <i class="fas fa-times search__icon--active"></i>
+            }
+            </div>
 
-                {filteredItems.length > 0  ? 
+            <ul className={!active && searchValue == '' ? "search-results__list" : "search-results__list active"}>
+                {filteredItems.length > 0  
+                ? 
                 filteredItems.map((item) => 
-                <Link to={`/shop/item/${item.format}/${transformLink(item.title)}`}>
-                    <div className="search-results-item">
-                        <div className="search-title">
-                            <h3>{item.brand}</h3>
-                            <h4>{item.title}</h4>
-                        </div>
-                        <div className="search-details">
-                            <p className="search-format">format: {item.format}</p>
-                            <p>{item.type.toLowerCase()}</p>
-                            <p>{item.iso} iso</p>
-                        </div>
-                    </div>
-                </Link>)
-                : null}
 
+                <Link className="search__item" to={`/shop/item/${item.format}/${transformLink(item.title)}`}>
+                        <div className="search__text">
+                            <h3 className="search__text--brand text">{item.brand}</h3>
+                            <h4 className="search__text--title text">{item.title}</h4>
+                        </div>
+                        <div className="search__text">
+                            <p className="search__text--format text">format: {item.format}</p>
+                            <p className="search__text--type text">{item.type.toLowerCase()}</p>
+                            <p className="search__text--iso text">{item.iso} iso</p>
+                        </div>
+                </Link>)
+
+                : 
+                null
+                }
             </ul>
-        </div>
         </>
     )
 }
