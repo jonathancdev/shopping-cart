@@ -2,82 +2,87 @@
 
 //Menu.jsx
 .menu {
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
-    margin-top: a.$header-height;
-    padding-top: a.$page-margin-top;
-    transform: translateX(-105%);
-    transition: all .3s cubic-bezier(.6, .04, .5, 1);
-    z-index: 1;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  margin-top: a.$header-height;
+  padding-top: a.$page-margin-top;
+  transform: translateX(-105%);
+  transition: all 0.3s cubic-bezier(0.6, 0.04, 0.5, 1);
+  z-index: 1;
 
-    &.open {
-        background-color: a.$color-yellow-primary;
-        transform: translateX(0);
-    }
+  &.open {
+    background-color: a.$color-yellow-primary;
+    transform: translateX(0);
+  }
 
-    &__link { //browse all film link, should be same as menu__item
-        display: block; //gives a element height/top/bottom padding
-    }
+  &__link {
+    //browse all film link, should be same as menu__item
+    display: block; //gives a element height/top/bottom padding
+  }
 }
 
 //MenuItem.jsx
 .menu__item {
-    min-height: 5rem; //min-height so submenu will expand
+  min-height: 5rem; //min-height so submenu will expand
 }
 
 .btn--menu {
-    background-color: inherit;
-    width: 100%;
-    padding: 1rem 4.5rem;
-    font-size: a.$menu-item-font-size;
-    color: a.$color-blue-darker;
-    font-weight: a.$menu-item-weight;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background-color: inherit;
+  width: 100%;
+  padding: 1rem 4.5rem;
+  font-size: a.$menu-item-font-size;
+  color: a.$color-blue-darker;
+  font-weight: a.$menu-item-weight;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .menu--arrow {
-    color: a.$color-blue-darker;
-    font-size: a.$menu-item-font-size;
+  color: a.$color-blue-darker;
+  font-size: a.$menu-item-font-size;
 }
 
 //Submenu.jsx
 .submenu {
-    width: 100vw;
-    padding: 0 4.5rem;
-    display: flex;
-    flex-direction: column;
-    max-height: 0rem;
-    background-color: a.$color-yellow-primary;
-    transform: translateX(-100rem);
-    transition: max-height .3s ease, background-color .5s ease, transform .01s ease;
+  width: 100vw;
+  padding: 0 4.5rem;
+  display: flex;
+  flex-direction: column;
+  max-height: 0rem;
+  background-color: a.$color-yellow-primary;
+  transform: translateX(-100rem);
+  transition: max-height 0.3s ease, background-color 0.5s ease,
+    transform 0.01s ease;
 
-    &.open {
-        background-color: a.$color-yellow-lighter;
-        max-height: 30rem;
-        transform: translateX(0);
-    }
+  &.open {
+    background-color: a.$color-yellow-lighter;
+    max-height: 30rem;
+    transform: translateX(0);
+  }
 }
 
 .submenu__link {
-    display: block;
-    color: a.$color-blue-darker;
-    padding: .5rem;
-    font-size: a.$submenu-link-font-size;
-    font-weight: a.$submenu-link-weight;
-    opacity: 0%;
-    transition: transform .01s ease, opacity .3s ease-out;
+  display: block;
+  color: a.$color-blue-darker;
+  padding: 0.5rem;
+  font-size: a.$submenu-link-font-size;
+  font-weight: a.$submenu-link-weight;
+  opacity: 0%;
+  transition: transform 0.01s ease, opacity 0.3s ease-out;
 
-    &.open {
-        transform: translateX(0);
-        opacity: 1;
-    }
+  &.open {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-
-.submenu--iso, .submenu--brands{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+.submenu--iso {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.submenu--brands {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }

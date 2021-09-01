@@ -1,90 +1,94 @@
-import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
-import './Category.css'
-import Options from '../../Options/Options'
-import ItemPreview from '../../ItemPreview'
+import React, { useEffect } from "react";
+import Options from "../../Options/Options";
+import ItemPreview from "../../ItemPreview";
 
+const Category = ({
+  match,
+  cats,
+  items,
+  addToCart,
+  setSortOption,
+  setFilterOption,
+}) => {
+  useEffect(() => {
+    //set filter and sort to original values when unmounted
+    return () => {
+      setSortOption(null);
+      setFilterOption(null);
+    };
+  }, []);
 
-const Category = (props) => {
-
-    useEffect(() => { //set filter and sort to original values when unmounted
-        console.log('mount')
-        return () => {
-            console.log('unmount')
-          props.setSortOption(null)
-          props.setFilterOption(null)
-        };
-      }, []);
-
-    const [items, setItems] = useState([])
-
-    const parse = (param) => {
-        if (param === "brands") {
-            const parsed = "brand"
-            return parsed
-        } else if (param === "color") {
-            const parsed = "type"
-            return parsed
-        } else if (param === "black-and-white") {
-            const parsed = "black and white"
-            return parsed
-        } 
-        else if (param === "color-negative") {
-            const parsed = "color negative"
-            return parsed
-        }  
-        else if (param === "color-all") {
-            const parsed = ['color negative', 'slide']
-            return parsed
-        } else {
-            return param
-        }
+  const parse = (param) => {
+    let parsed = "";
+    switch (param) {
+      case "brands":
+        parsed = "brand";
+        break;
+      case "color":
+        parsed = "type";
+        break;
+      case "black-and-white":
+        parsed = "black and white";
+        break;
+      case "color-negative":
+        parsed = "color negative";
+        break;
+      case "color-all":
+        parsed = ["color negative", "slide"];
+        break;
+      default:
+        parsed = param;
     }
+    return parsed;
+  };
 
-    const category = parse(props.match.params.category)
-    const subcategory = parse(props.match.params.subcategory)
+  const category = parse(match.params.category);
+  const subcategory = parse(match.params.subcategory);
 
-    const filterItems = () => {
-        const itemCat = category
-        const itemSub = subcategory
-        if (typeof itemSub !== 'object') {
-            const filtered = props.items.filter(item => item[itemCat].toLowerCase() === itemSub)
-            return filtered
-        } else {
-            const filtered = props.items.filter(item => (item[itemCat].toLowerCase() === itemSub[0] || item[itemCat].toLowerCase() === itemSub[1]))
-            return filtered
-        }
+  const filterItems = () => {
+    const itemCat = category;
+    const itemSub = subcategory;
+    if (typeof itemSub !== "object") {
+      const filtered = items.filter(
+        (item) => item[itemCat].toLowerCase() === itemSub
+      );
+      return filtered;
+    } else {
+      const filtered = items.filter(
+        (item) =>
+          item[itemCat].toLowerCase() === itemSub[0] ||
+          item[itemCat].toLowerCase() === itemSub[1]
+      );
+      return filtered;
     }
+  };
 
-    const catItems = filterItems()
-    
+  const catItems = filterItems();
 
-    console.log(catItems)
-    return (
-        
-        <div className='page category'>
-            <Options 
-                cats={props.cats}
-                setSortOption={props.setSortOption}
-                setFilterOption={props.setFilterOption}
-                >
-                <div className="shop-path">
-                shop / {category != 'type' ? category : 'color'} / {typeof subcategory === 'string' ? subcategory : 'color & slide'}
-                </div>
-            </Options>
-
-            <div className="items-grid">
-                {catItems.length > 0
-                ?  <> {catItems.map(item =>
-                    <ItemPreview
-                    item={item}
-                    addToCart={props.addToCart}
-                />
-                        )}
-                </>: 'no items match' }
-            </div>
+  return (
+    <div className="page">
+      <div className="category">
+        <Options
+          cats={cats}
+          setSortOption={setSortOption}
+          setFilterOption={setFilterOption}
+        ></Options>
+        <div className="shop-path">
+          shop / {category != "type" ? category : "color"} /{" "}
+          {typeof subcategory === "string" ? subcategory : "color & slide"}
         </div>
-    )
-}
+        {catItems.length > 0 ? (
+          <div className="shop-grid">
+            {catItems.map((item) => (
+              <ItemPreview item={item} addToCart={addToCart} />
+            ))}
+          </div>
+        ) : (
+          "no items match"
+        )}
+      </div>
+    </div>
+  );
+};
 
 export default Category;
