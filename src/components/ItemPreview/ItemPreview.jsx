@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import createCartObject from "../components/Utilities/createCartObject";
+import createCartObject from "../Utilities/createCartObject";
 
 const ItemPreview = ({ item, addToCart }) => {
   const [added, setAdded] = useState(false);

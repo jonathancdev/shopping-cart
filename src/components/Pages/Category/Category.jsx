@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Options from "../../Options/Options";
-import ItemPreview from "../../ItemPreview";
+import ItemPreview from "../../ItemPreview/ItemPreview";
 
 const Category = ({
   match,

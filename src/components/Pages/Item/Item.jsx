@@ -1,103 +1,91 @@
-import React, {useState, useEffect} from 'react';
-import './Item.css';
-import createCartObject from '../../Utilities/createCartObject'
+import React, { useState, useEffect } from "react";
+import createCartObject from "../../Utilities/createCartObject";
 
-const Item = (props) => {
-
-    const transformLink = (str) => {
-        const conditions = ['i-', 't-', 'x-t']
-        if(conditions.some((cond) => str.includes(cond))) {
-            const filter = conditions.filter(cond => str.includes(cond))
-            const index = str.search(filter[0])
-            const match = str.slice(index, index + filter[0].length)
-            const replace1 = match.replace(/-/g, '!')
-            str = str.replace(filter[0], replace1)
-            str = str.replace(/-/g, ' ');
-            str = str.replace(/!/g, '-').toLowerCase()
-            return str
-        } else {
-            str = str.replace(/-/g, ' ');
-            return str
-        }
+const Item = ({ match, items, addToCart }) => {
+  const transformLink = (str) => {
+    //accounts for product names that have '-' in name, specific to items in this database (tri-x, t-max, superia x-tra)
+    const conditions = ["i-", "t-", "x-t"];
+    if (conditions.some((cond) => str.includes(cond))) {
+      //if string includes condition
+      const filter = conditions.filter((cond) => str.includes(cond)); //filter the condition
+      const index = str.search(filter[0]); //get index of that condition in string
+      const match = str.slice(index, index + filter[0].length); //slice that condition out of the string
+      const replace1 = match.replace(/-/g, "!"); //replace the '-' with '!' (could use any symbol, will change back to '-')
+      str = str.replace(filter[0], replace1); //replaces condition in string with new '!' string
+      str = str.replace(/-/g, " "); //removes all '-' so string can be displayed on page
+      str = str.replace(/!/g, "-").toLowerCase(); //changes '!' back to '-', preserving original product name
+      return str;
+    } else {
+      str = str.replace(/-/g, " "); //if not, just change all the '-' to spaces
+      return str;
     }
+  };
 
-    const filter = props.items
-                    .filter((item) => item.title.toLowerCase() == transformLink(props.match.params.title))
-                    .filter((item) => item.format === props.match.params.format)
-
-    const item = filter[0]
-
-    const [added, setAdded] = useState(false)
-    const [currItem, setCurrItem] = useState(item)
-
-    useEffect(() => {
-
-        setCurrItem(item)
-    })
-
-    const handleClick = () => {
-        props.addToCart(createCartObject(item))
-        itemAddedCycle()
-    }
-
-    // const createObject = () => {
-    //     const obj = {
-    //         cartId: item.uniqueId,
-    //         brand: item.brand,
-    //         title: item.title,
-    //         price: item.price,
-    //         image: item.image,
-    //         type: item.type,
-    //         format: item.format,
-    //         iso: item.iso,
-    //         quantity: 1,
-    //         increment() { this.quantity += 1},
-    //         decrement() { this.quantity -= 1}
-    //     }
-    //     return obj
-    // }
-
-    const itemAddedCycle = () => {
-        setAdded(true)
-        setTimeout(() => setAdded(false), 4000)
-    }
-
-    return (
-        <div className='page item'>
-            {currItem
-            ?<div className='item-page-wrap'>
-                <h3 className="item-page-brand">{currItem.brand.toUpperCase()}</h3>
-                <h4 className="item-page-title">{item.title}</h4>
-                <div className="item-page-img-wrap">
-                    <img className="item-page-img" src={item.image}></img>
-                </div>
-                <div className="item-page-details">
-                    <span className="item-page-detail">{item.format}</span>
-                    <span className="item-page-detail">{item.type.toLowerCase()}</span>
-                    <span className="item-page-detail">{item.iso} iso</span>
-                </div>
-                <p className="item-page-desc">{item.description}</p>
-                <div className="price-div">
-                    <p className="item-page-price">€{Number(item.price).toFixed(2)}</p>
-
-                    <div onClick={handleClick} className="cart-btn-div">
-
-                        <div className={added ? "added-icon-div active" : "added-icon-div"}>
-                            <div className="added-icon"><i class="far fa-check-square"></i></div>
-                        </div>
-
-                        <button className={added ? "cart-btn active" : "cart-btn"} 
-                            disabled={added}
-                            >
-                            {added ? 'added to cart!' : 'add to cart'} 
-                        </button>
-
-                    </div>
-                </div>
-            </div>
-            : null}
-        </div>
+  const filter = items
+    .filter(
+      (item) => item.title.toLowerCase() == transformLink(match.params.title)
     )
-}
+    .filter((item) => item.format === match.params.format);
+
+  const item = filter[0];
+
+  const [added, setAdded] = useState(false);
+  const [currItem, setCurrItem] = useState(item);
+
+  useEffect(() => {
+    setCurrItem(item);
+  });
+
+  const handleClick = () => {
+    addToCart(createCartObject(item));
+    itemAddedCycle(); //add to cart animation
+  };
+
+  const itemAddedCycle = () => {
+    setAdded(true);
+    setTimeout(() => setAdded(false), 3500);
+  };
+
+  return (
+    <div className="page">
+      {currItem ? (
+        <div className="item">
+          <h3 className="item__heading-primary">{currItem.brand}</h3>
+          <h4 className="item__heading-secondary">{item.title}</h4>
+
+          <img className="item__img" src={item.image}></img>
+
+          <div className="item__details">
+            <p className="item__text">{item.format}</p>
+            <p className="item__text">{item.type.toLowerCase()}</p>
+            <p className="item__text">iso {item.iso}</p>
+          </div>
+          <p className="item__description">{item.description}</p>
+
+          <p className="item__price">€{Number(item.price).toFixed(2)}</p>
+
+          <button
+            disabled={added}
+            onClick={added ? null : handleClick}
+            className={!added ? "add-to-cart__btn" : "add-to-cart__btn active"}
+          >
+            <div
+              className={
+                !added
+                  ? "add-to-cart__btn--icon"
+                  : "add-to-cart__btn--icon active"
+              }
+            >
+              <i className="far fa-check-circle"></i>
+            </div>
+            <h4 className="item__heading-tertiary">
+              {added ? "added to cart!" : "add to cart"}
+            </h4>
+          </button>
+        </div>
+      ) : null}
+    </div>
+  );
+};
 
 export default Item;
