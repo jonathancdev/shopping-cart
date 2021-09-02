@@ -2,8 +2,8 @@
 
 .options {
   background-color: a.$color-yellow-lighter;
-  width: calc(100% - 4rem);
-  padding: 1rem 0;
+  padding: 0.5rem 0;
+  height: 10rem;
 }
 
 .filter {
@@ -22,7 +22,7 @@
 
   &__label {
     //text above select boxes
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-weight: 600;
     margin-left: -1rem; //center labels above, offsets width off arrow
   }
@@ -46,14 +46,14 @@
   justify-content: center;
 
   &__label {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-weight: 600;
     margin-right: 0.5rem;
   }
 
   &__list {
     @include a.horizontal-list;
-    margin: 2rem 1rem 0rem 1rem;
+    margin: 1rem 1rem 0rem 1rem;
     align-items: center;
   }
   &-data {

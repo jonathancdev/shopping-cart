@@ -80,7 +80,11 @@ const Category = ({
         {catItems.length > 0 ? (
           <div className="shop-grid">
             {catItems.map((item) => (
-              <ItemPreview item={item} addToCart={addToCart} />
+              <ItemPreview
+                item={item}
+                addToCart={addToCart}
+                key={item.uniqueId}
+              />
             ))}
           </div>
         ) : (

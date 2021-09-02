@@ -2,5 +2,7 @@
 
 .shop {
   margin-top: a.$page-margin-top;
-  width: 100vw; //change to 100% for mobile - doesn't allow grid if too narrow obviously
+  width: calc(
+    100vw - 4rem
+  ); //change to 100% for mobile - doesn't allow grid if too narrow obviously
 }
