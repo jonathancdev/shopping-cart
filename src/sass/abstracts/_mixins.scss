@@ -51,3 +51,25 @@
   background-color: black;
   clip-path: polygon(100% 0%, 0 0%, 50% 100%);
 }
+
+@mixin square-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  width: 25rem;
+  background-color: v.$color-blue-darker;
+  cursor: pointer;
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: v.$color-white;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  box-shadow: 0 0.3rem 0.5rem rgba(v.$color-black, 0.6);
+
+  &:active {
+    box-shadow: 0 0.2rem 0.4rem rgba(v.$color-black, 0.5);
+    transform: translateY(-0.1rem);
+  }
+}

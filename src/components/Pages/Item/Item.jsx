@@ -43,7 +43,7 @@ const Item = ({ match, items, addToCart }) => {
 
   const itemAddedCycle = () => {
     setAdded(true);
-    setTimeout(() => setAdded(false), 3500);
+    setTimeout(() => setAdded(false), 3750);
   };
 
   return (

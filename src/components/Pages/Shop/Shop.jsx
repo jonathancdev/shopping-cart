@@ -10,7 +10,7 @@ const Shop = ({ cats, items, addToCart, setSortOption, setFilterOption }) => {
       setFilterOption(null);
     };
   }, []);
-  console.log(items);
+
   return (
     <div className="page">
       <div className="shop">

@@ -1,44 +1,47 @@
-import React from 'react';
-import { Link } from 'react-router-dom'
-import './Cart.css'
-import CartItem from '../Cart/CartItem'
+import React from "react";
+import { Link } from "react-router-dom";
+import CartItem from "../Cart/CartItem";
 
-const Cart = (props) => {
+const Cart = ({ shoppingCart, addToCart, decrementItem }) => {
+  const cartItems = shoppingCart.filter((item) => item.quantity > 0);
 
-    console.log(props.shoppingCart)
-    const cartItems = props.shoppingCart.filter(item => item.quantity > 0)
+  const total = shoppingCart.reduce(
+    (acc, curr) => parseInt(curr.price * curr.quantity) + parseInt(acc),
+    0
+  );
 
-    const total = props.shoppingCart.reduce((acc, curr) => parseInt(curr.price * curr.quantity) + parseInt(acc), 0)
-
-    return (
-        <div className='page cart'>
-
-            { props.shoppingCart.length > 0
-            ? <>
-            <div className="cart-wrapper">
-            {cartItems.map(item =>
-                <CartItem addToCart={props.addToCart} 
-                    cart={props.shoppingCart}
-                    decrementItem={props.decrementItem}
-                    item={item}
-                >
-
-                </CartItem>
-                        )}
-            </div>
-            <div className="checkout-wrapper">
-                <div className="cart-total">
-                    <p>Subtotal</p>
-                    <p className="total-value">€{total}.00</p>
-                </div>
-                <Link to="/checkout">
-                    <button className="checkout-btn">check out</button>
-                </Link>
-            </div>
-            </>
-            : <p>your shopping cart is empty</p> }
+  return (
+    <div className="page">
+      <div className="cart">
+        {shoppingCart.length > 0 ? (
+          <ul className="cart-list">
+            {cartItems.map((item) => (
+              <CartItem
+                addToCart={addToCart}
+                cart={shoppingCart}
+                decrementItem={decrementItem}
+                item={item}
+                key={item.uniqueId}
+              ></CartItem>
+            ))}
+          </ul>
+        ) : (
+          <div className="fallback cart-list">
+            <p className="fallback__text">your shopping cart is empty</p>
+          </div>
+        )}
+        <div className="cart-checkout">
+          <div className="cart-checkout--total">
+            <p className="cart-checkout--subtotal">Subtotal</p>
+            <p className="cart-checkout--price">€{total}.00</p>
+          </div>
+          <Link to="/checkout">
+            <button className="cart-checkout__btn btn">check out</button>
+          </Link>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
 export default Cart;

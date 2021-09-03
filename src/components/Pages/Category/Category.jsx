@@ -88,7 +88,9 @@ const Category = ({
             ))}
           </div>
         ) : (
-          "no items match"
+          <div className="fallback category">
+            <p className="fallback__text">no items match</p>
+          </div>
         )}
       </div>
     </div>
