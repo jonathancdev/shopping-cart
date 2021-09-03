@@ -19,27 +19,13 @@
   position: absolute;
   top: 2.85rem;
   right: 2rem;
-  background-color: a.$color-blue-primary;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  cursor: pointer;
+  @include a.round-button;
   transition: all 0.125s ease-in;
 
-  &.active {
-    transform: scale(1.25);
-    background-color: #084c61;
-  }
   &--icon {
     font-size: 1.2rem;
     font-weight: 600;
     text-align: center;
-    color: a.$color-white;
-  }
-
-  &:hover {
-    transform: scale(1.075);
-    box-shadow: rgba(0, 0, 0, 0.15) 0.195rem 0.195rem 0.5rem;
   }
 }
 

@@ -9,7 +9,7 @@
   padding-top: a.$page-margin-top;
   transform: translateX(-105%);
   transition: all 0.3s cubic-bezier(0.6, 0.04, 0.5, 1);
-  z-index: 1;
+  z-index: 2;
 
   &.open {
     background-color: a.$color-yellow-primary;

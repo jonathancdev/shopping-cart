@@ -36,7 +36,12 @@ const Cart = ({ shoppingCart, addToCart, decrementItem }) => {
             <p className="cart-checkout--price">€{total}.00</p>
           </div>
           <Link to="/checkout">
-            <button className="cart-checkout__btn btn">check out</button>
+            <button
+              className="cart-checkout__btn btn"
+              disabled={!shoppingCart.length > 0}
+            >
+              check out
+            </button>
           </Link>
         </div>
       </div>
