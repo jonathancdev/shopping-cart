@@ -1,30 +1,40 @@
 @use "../abstracts/" as a;
 
 .home {
+  position: relative;
+  height: 100%;
   margin-top: a.$page-margin-top;
+  &__main {
+    border: solid;
+    //fits main section perfectly between shop all and search items
+    height: calc((100% - #{a.$header-height} * 2) - 4rem);
+  }
 }
 .home__item {
-  height: 10rem;
-  padding: 1rem;
-  margin: 1rem 0;
-  color: a.$color-blue-darker;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: a.$header-height;
+  width: 100%;
+  margin: 1rem 0;
+  color: a.$color-blue-darker;
   background-color: a.$color-yellow-lighter;
-  position: relative; //so children in searchbar take up appropriate width
 
   &--shop {
+    position: relative;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     font-size: 3.6rem;
     font-weight: 600;
   }
   &--arrow {
+    position: absolute;
+    right: 2.5rem;
     font-size: 4rem;
-    margin-top: 0.5rem;
+    //align arrow and text
+    margin-top: 0.4rem;
   }
 
   &--img {

@@ -18,8 +18,9 @@ $color-blue-grey: #455155;
 $color-white-grey: rgb(219, 219, 219);
 
 //MENU
-$header-height: 10rem;
-
+$header-height: 11rem;
+//***must change body height rem to match header-height***
+$body-height: calc(100% - 11rem);
 $menu-item-font-size: 3rem;
 $menu-item-weight: 600;
 

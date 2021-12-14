@@ -1,4 +1,4 @@
-@use '../abstracts/' as a;
+@use "../abstracts/" as a;
 
 .header {
   position: fixed;
@@ -10,8 +10,8 @@
   align-items: center;
   justify-content: space-around;
   background-color: a.$color-white;
-  transition: all 0.5s cubic-bezier(0.6, 0.04, 0.5, 1);
   z-index: 1;
+  transition: all 0.5s cubic-bezier(0.6, 0.04, 0.5, 1);
 
   &.open {
     background-color: a.$color-yellow-primary;
@@ -24,18 +24,21 @@
   height: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-
+  align-items: flex-start;
   justify-content: space-between;
   transition: all 0.1s ease-in-out;
 
   &__line {
-    width: 2.5rem;
+    width: 3rem;
     height: 0.2rem;
+    border-radius: 20px;
     background-color: a.$color-black;
     transition: all 0.15s cubic-bezier(0.785, 0.135, 0.15, 0.86);
-
+    &:nth-child(1) {
+      width: 3rem;
+    }
     &:nth-child(2) {
+      width: 2.75rem;
       transition: all 0.08s ease-in-out;
     }
   }
@@ -45,7 +48,7 @@
 
     .hamburger__line {
       height: 2px;
-      width: 25px;
+      width: 3rem;
 
       &:nth-child(1) {
         transform: rotate(45deg) translate(12.5px);
@@ -64,13 +67,21 @@
 .logo__img {
   height: 4rem;
 }
+.cart--icon {
+  position: relative;
+  height: 5rem;
+  width: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .cart--icon__img {
   height: 3.5rem;
 }
 .cart--icon__counter {
   position: absolute;
-  margin-top: -4.7rem;
-  margin-left: 1.2rem;
+  top: -0.01rem;
+  right: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
