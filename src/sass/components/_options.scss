@@ -1,9 +1,11 @@
-@use '../abstracts/' as a;
+@use "../abstracts/" as a;
 
 .options {
   background-color: a.$color-yellow-lighter;
   padding: 0.5rem 0;
   height: 10rem;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .filter {

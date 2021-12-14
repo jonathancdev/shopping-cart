@@ -1,11 +1,10 @@
-@use '../abstracts/' as a;
+@use "../abstracts/" as a;
 
 .page {
-    position: absolute;
-    margin: 0 auto;
-    margin-top: a.$header-height;
-    height: 100vh;
-    width: 100vw;
-    max-width: 48rem;
-    padding: 0 2rem;
-    }
+  position: relative;
+  margin: 0 auto;
+  margin-top: a.$header-height;
+  height: calc(100% - 10rem);
+  width: 100vw;
+  padding: 0 2rem;
+}

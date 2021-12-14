@@ -16,26 +16,26 @@ const Home = ({ items }) => {
         </Link>
 
         <Link className="home__item" to="/shop/category/color/black-and-white">
-          <img
+          {/* <img
             src={home1}
             className="home__item--img"
             alt="black and white film"
-          />
+          /> */}
           <p className="home__item--title">black and white</p>
         </Link>
 
         <Link className="home__item" to="/shop/category/color/color-all">
-          <img src={home2} className="home__item--img" alt="color film" />
+          {/* <img src={home2} className="home__item--img" alt="color film" /> */}
           <p className="home__item--title">color & slide</p>
         </Link>
 
         <Link className="home__item" to="/shop/category/format/35mm">
-          <img src={home3} className="home__item--img" alt="35mm film" />
+          {/* <img src={home3} className="home__item--img" alt="35mm film" /> */}
           <p className="home__item--title">35mm</p>
         </Link>
 
         <Link className="home__item" to="/shop/category/format/120">
-          <img src={home4} className="home__item--img" alt="120 film" />
+          {/* <img src={home4} className="home__item--img" alt="120 film" /> */}
           <p className="home__item--title">medium format</p>
         </Link>
 

@@ -1,8 +1,9 @@
-@use '../abstracts/' as a;
+@use "../abstracts/" as a;
 
 .cart {
+  position: relative;
   margin-top: a.$page-margin-top;
-  height: 100vh;
+  height: 100%;
 
   &-list {
     min-height: 30rem;
@@ -13,6 +14,8 @@
 }
 
 .cart-checkout {
+  position: absolute;
+  bottom: 0;
   @include a.content-area-yellow;
 
   &--total {
