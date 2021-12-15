@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 
-const SearchBar = ({ items }) => {
+const SearchBar = ({ items, updateSearchList }) => {
   const [searchValue, setSearchValue] = useState("");
   const [active, setActive] = useState(false);
 
@@ -20,16 +20,19 @@ const SearchBar = ({ items }) => {
       const filtered = array.filter((item) =>
         item.string.includes(search.toLowerCase())
       );
-      return filtered.map((item) => items[item.index]);
+      // return filtered.map((item) => items[item.index]);
+      updateSearchList(filtered.map((item) => items[item.index]));
     } else {
-      return [];
+      // return [];
+      updateSearchList([]);
     }
   };
 
-  const filteredItems = searchItems(stringifyItems, searchValue);
+  // const filteredItems = searchItems(stringifyItems, searchValue);
 
   const searchListen = () => {
-    setSearchValue(searchField.current.value);
+    //setSearchValue(searchField.current.value);
+    searchItems(stringifyItems, searchField.current.value);
   };
 
   const searchFocus = (e) => {
@@ -78,7 +81,7 @@ const SearchBar = ({ items }) => {
             : "search-results__list active"
         }
       >
-        {filteredItems.length > 0
+        {/* {filteredItems.length > 0
           ? filteredItems.map((item) => (
               <Link
                 className="search__item"
@@ -99,7 +102,7 @@ const SearchBar = ({ items }) => {
                 </div>
               </Link>
             ))
-          : null}
+          : null} */}
       </ul>
     </div>
   );

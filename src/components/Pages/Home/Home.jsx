@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
+import SearchList from "./SearchList";
 
 const Home = ({ items }) => {
+  const [searchList, setSearchList] = useState([]);
+  const updateSearchList = (arr) => {
+    setSearchList(arr);
+  };
+
+  console.log(searchList);
   return (
     <div className="page">
       <div className="home">
@@ -11,6 +18,7 @@ const Home = ({ items }) => {
           <i className="far fa-arrow-alt-circle-right home__item--arrow"></i>
         </Link>
         <div className="home__main">
+          {searchList.length > 0 && <SearchList searchList={searchList} />}
           {/* <Link className="home__item" to="/shop/category/color/black-and-white">
           <img src={{}} className="home__item--img" />
           <p className="home__item--title">black and white</p>
@@ -31,7 +39,7 @@ const Home = ({ items }) => {
           <p className="home__item--title">medium format</p>
         </Link> */}
         </div>
-        <SearchBar items={items} />
+        <SearchBar items={items} updateSearchList={updateSearchList} />
       </div>
     </div>
   );
