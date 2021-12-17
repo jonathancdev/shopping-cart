@@ -37,7 +37,6 @@ const Options = ({ children, cats, setFilterOption, setSortOption }) => {
   };
 
   const handleSortChange = (e) => {
-    console.log(e.target.value);
     setSortOption(e.target.value);
   };
 

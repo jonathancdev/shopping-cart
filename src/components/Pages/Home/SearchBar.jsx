@@ -43,6 +43,7 @@ const SearchBar = ({ items, updateSearchList }) => {
   const searchBlur = () => {
     setActive(false);
     searchField.current.value = "";
+
     setTimeout(() => {
       setSearchValue("");
     }, 75); //stop ul from disappearing before click event on link is registered

@@ -5,11 +5,16 @@ import SearchList from "./SearchList";
 
 const Home = ({ items }) => {
   const [searchList, setSearchList] = useState([]);
+  const [searchShouldBeVisible, setSearchShouldBeVisible] = useState(false);
   const updateSearchList = (arr) => {
+    if (arr.length > 1) {
+      setSearchShouldBeVisible(true);
+    } else if (arr.length < 1) {
+      setSearchShouldBeVisible(false);
+    }
     setSearchList(arr);
   };
 
-  console.log(searchList);
   return (
     <div className="page">
       <div className="home">
@@ -18,7 +23,12 @@ const Home = ({ items }) => {
           <i className="far fa-arrow-alt-circle-right home__item--arrow"></i>
         </Link>
         <div className="home__main">
-          {searchList.length > 0 && <SearchList searchList={searchList} />}
+          {searchShouldBeVisible && (
+            <SearchList
+              searchList={searchList}
+              updateSearchList={updateSearchList}
+            />
+          )}
           {/* <Link className="home__item" to="/shop/category/color/black-and-white">
           <img src={{}} className="home__item--img" />
           <p className="home__item--title">black and white</p>

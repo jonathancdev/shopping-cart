@@ -1,10 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function SearchList({ searchList }) {
+export default function SearchList({ searchList, updateSearchList }) {
   const transformLink = (str) => {
     str = str.replace(/\s+/g, "-").toLowerCase();
     return str;
+  };
+  const handleClose = () => {
+    updateSearchList([]);
   };
   return (
     <ul className="search-list">
@@ -24,6 +27,10 @@ export default function SearchList({ searchList }) {
           </div>
         </Link>
       ))}
+      <span className="search-list__title">search</span>
+      <button onClick={handleClose} className="search-list__close">
+        x
+      </button>
     </ul>
   );
 }

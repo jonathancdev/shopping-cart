@@ -10,8 +10,9 @@
   font-size: 2rem;
   background-color: a.$color-white;
   border: none;
+
   &.active {
-    text-align: start;
+    //text-align: start;
   }
 }
 .search__icon {
@@ -50,7 +51,7 @@
 .search__item {
   display: inline-block;
   margin: 0 0.5rem;
-  padding: 1rem 0;
+  padding: 1rem 1rem;
   width: 97%; //to account for scrollbar covering right side
 
   &:hover {

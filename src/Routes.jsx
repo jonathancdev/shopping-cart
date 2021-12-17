@@ -56,7 +56,7 @@ const Routes = () => {
     sortBy !== null ? Sort(items, sortBy) : Sort(items, "brandasc");
     filterBy !== null
       ? (items = Filter(items, filterBy[0], filterBy[1]))
-      : console.log("null");
+      : console.log(" console logging null");
     items.map(
       (item) =>
         (item.uniqueId = (
@@ -83,7 +83,6 @@ const Routes = () => {
 
   //shopping cart functions
   const addToCart = (obj) => {
-    console.log("add to cart");
     const prev = shoppingCart;
     const item = obj;
     if (!checkObj(item)) {

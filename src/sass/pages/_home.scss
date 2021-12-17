@@ -5,7 +5,7 @@
   height: 100%;
   margin-top: a.$page-margin-top;
   &__main {
-    border: solid;
+    position: relative;
     //fits main section perfectly between shop all and search items
     height: calc((100% - #{a.$header-height} * 2) - 4rem);
   }
